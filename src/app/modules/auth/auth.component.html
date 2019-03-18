@@ -1,10 +1,12 @@
-<p>
-  auth works!
-</p>
-<nav>
-  <a routerLink="/auth/login">Login</a>
-  <br>
-  <a routerLink="/auth/registration">Registration</a>
-</nav>
 
-<router-outlet></router-outlet>
+
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    Login
+    <pilt-login></pilt-login>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    Registration
+    <pilt-registration></pilt-registration>
+  </mat-grid-tile>
+</mat-grid-list>

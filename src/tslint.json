@@ -1,5 +1,10 @@
 {
     "extends": "../tslint.json",
+    "linterOptions": {
+      "exclude": [
+        "node_modules/**"
+      ]
+    },
     "rules": {
         "directive-selector": [
             true,
@@ -12,6 +17,10 @@
             "element",
             "pilt",
             "kebab-case"
-        ]
+        ],
+        "quotemark": [true, "single"],
+        "indent": [true, "spaces", 2],
+        "no-inferrable-types": [true, "ignore-params", "ignore-properties"]
+
     }
 }
