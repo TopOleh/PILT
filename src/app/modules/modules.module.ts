@@ -9,9 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { FirebaseModule } from './firebase/firebase.module';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './user/user/user.component';
 
 @NgModule({
-  declarations: [LoginComponent, AuthComponent, RegistrationComponent, HomeComponent],
+  declarations: [LoginComponent, AuthComponent, RegistrationComponent, HomeComponent, UserComponent],
   imports: [
     CommonModule,
     FirebaseModule,
