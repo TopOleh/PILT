@@ -1,12 +1,15 @@
+<form [formGroup]="loginForm" (ngSubmit)="submitLogin()" >
 
-<mat-form-field>
-  <input matInput placeholder="Email" formControl="email" required>
-  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
-<br>
-<mat-form-field>
-  <input matInput placeholder="Password" [type]="hide ? 'password' :
-   'text'">
-   <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' :
-      'visibility'}}</mat-icon>
-</mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Email" type="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' :
+      'text'">
+      <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' :
+        'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <button matButton>Login</button>
+</form>

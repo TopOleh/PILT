@@ -1,11 +1,29 @@
-<mat-form-field>
-    <input matInput placeholder="Email" formControl="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-  <br>
+<form [formGroup]="registerForm" (ngSubmit)="submitRegistration()" >
+
   <mat-form-field>
-    <input matInput placeholder="Password" [type]="hide ? 'password' :
-     'text'">
-     <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' :
-        'visibility'}}</mat-icon>
+    <input matInput formControlName="email" placeholder="Email" type="email">
   </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' :
+    'text'">
+    <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' :
+      'visibility'}}</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput class="pilt-register-age" formControlName="age" placeholder="Age" type="number">
+    </mat-form-field>
+
+    <label id="pilt-register-gender">Gender</label>
+    <mat-radio-group formControlName="gender" aria-labeledby="pilt-register-gender">
+      <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-radio-button>
+    </mat-radio-group>
+
+    <button matButton>Register</button>
+</form>
+
