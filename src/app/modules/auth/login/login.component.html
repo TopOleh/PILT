@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="submitLogin()" >
+<form [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm.value)" >
 
     <mat-form-field>
       <input matInput formControlName="email" placeholder="Email" type="email">

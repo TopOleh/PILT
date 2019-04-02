@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _afs: FirebaseService
+    private _fbs: FirebaseService,
   ) { }
 
   ngOnInit() {
@@ -37,12 +37,24 @@ export class RegistrationComponent implements OnInit {
 
   public submitRegistration(user: NewUser): void {
     this.isSubmited = true;
-    console.log('this.registerForm.value :', this.registerForm.value);
+    console.log('this.registerForm.value :', user);
 
     if (this.registerForm.invalid) {
       return;
     }
-    this._afs.register(this.registerForm.value);
+
+    this._fbs.getUser(user)
+    .subscribe(
+      users => {
+        if (users.length === 0) {
+          this._fbs.register(user);
+          localStorage.setItem('ACCESS_TOKEN', 'access_token');
+        } else {
+          console.error('User already exist');
+        }
+      },
+      err => console.error('Register error :', err)
+    );
   }
 
 }

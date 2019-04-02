@@ -7,7 +7,6 @@ import { HomeComponent } from 'src/app/modules/home/home.component';
 import { AuthComponent } from 'src/app/modules/auth/auth.component';
 
 const routes: Routes = [
-  // Fallback when no prior route is matched
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'auth', component: AuthComponent },
   { path: 'home', component: HomeComponent },
