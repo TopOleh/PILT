@@ -1,4 +1,7 @@
-<form [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm.value)" >
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="submitLogin(loginForm.value)"
+  class="pilt-login__form">
 
     <mat-form-field>
       <input matInput formControlName="email" placeholder="Email" type="email">

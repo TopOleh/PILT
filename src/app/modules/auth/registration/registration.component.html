@@ -1,4 +1,7 @@
-<form [formGroup]="registerForm" (ngSubmit)="submitRegistration(registerForm.value)" >
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="submitRegistration(registerForm.value)"
+  class="pilt-register__form" >
 
   <mat-form-field>
     <input matInput formControlName="email" placeholder="Email" type="email">
