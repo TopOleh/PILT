@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatIconModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatButtonModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -23,7 +25,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatIconModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatButtonModule
   ]
 })
 export class MaterialModule { }

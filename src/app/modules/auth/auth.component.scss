@@ -1,4 +1,9 @@
-@import'./src/assets/styles/variables';
+@import'./src/styles';
+
+// Variables
+$text-description-color: #94936ec7;
+$text-main-title-color: #a69eb1c2;
+$text-register-title-color: #937d9e;
 
 .pilt-auth__wrapper {
   background-image: linear-gradient($main-pink-color 0%, $main-bark-blue-color 100%);
@@ -22,4 +27,23 @@
   justify-content: center;
   height: 80%;
   width: 80%;
+}
+
+.pilt-registration-title {
+  @include header-h3;
+  color: $text-register-title-color;
+}
+
+.pilt-auth-image__title {
+  @include header-h1;
+  color: $text-main-title-color;
+}
+
+.pilt-auth-image__description {
+  @include text-big-description;
+  color: $text-description-color;
+}
+
+.pilt-right-side__wrapper {
+  display: grid;
 }

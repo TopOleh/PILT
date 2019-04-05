@@ -1,0 +1,41 @@
+
+//**********Headers**********
+
+@mixin header-h1 {
+  font-size: 4rem;
+  line-height: 5rem;
+  padding: 15px;
+}
+
+@mixin header-h2 {
+  font-size: 3rem;
+  line-height: 4rem;
+  padding: 13px;
+}
+
+@mixin header-h3 {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 10px;
+}
+
+@mixin header-h4 {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 10px;
+}
+
+@mixin header-h5 {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 10px;
+}
+
+// TEXTS
+
+@mixin text-big-description {
+  padding: 20px;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  text-align: center;
+}

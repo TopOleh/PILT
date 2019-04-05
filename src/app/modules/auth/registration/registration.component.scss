@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/variables';
+
 .pilt-register-age {
   &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
     display: none;
@@ -6,4 +8,11 @@
 
 .pilt-register__form {
   display: grid;
+}
+
+.pilt-registration__submit {
+  background-color: $main-bark-blue-color;
+  color: $main-pink-color;
+  padding: 10px;
+  margin: 20px 0;
 }
