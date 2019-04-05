@@ -1,5 +1,7 @@
+@import'./src/assets/styles/variables';
+
 .pilt-auth__wrapper {
-  background-image: linear-gradient(#af6171 0%, #110D33 100%);
+  background-image: linear-gradient($main-pink-color 0%, $main-bark-blue-color 100%);
   position: absolute;
   width: 100%;
 }
@@ -11,9 +13,13 @@
 }
 
 .pilt-auth-image__wrapper {
+  align-items: center;
   background: url('https://firebasestorage.googleapis.com/v0/b/play-in-life-together.appspot.com/o/Images%2Fsmall%2Fregistration-left-side.jpg?alt=media&token=12d67f80-6d45-4bf4-aeb8-fb5e9b5cb080') center center no-repeat;
   border-radius: 100%;
   box-shadow: 0px 0px 20px 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
   height: 80%;
   width: 80%;
 }
