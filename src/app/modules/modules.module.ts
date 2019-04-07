@@ -14,6 +14,7 @@ import { AppRoutingModule } from 'src/app/shared/routing/app-routing.module';
 import { UserComponent } from './user/user/user.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { VerifyEmailComponent } from './auth/verify-email/verify-email.component
     HomeComponent,
     UserComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
