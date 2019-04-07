@@ -1,3 +1,4 @@
+<h3 class="pilt-registration-title">Registration</h3>
 <form
   [formGroup]="registerForm"
   (ngSubmit)="submitRegistration(registerForm.value)"
@@ -29,4 +30,4 @@
 
     <button mat-flat-button class="pilt-registration__submit">Submit</button>
 </form>
-
+<a routerLink="/auth/login">Login</a>

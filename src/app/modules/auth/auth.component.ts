@@ -1,3 +1,4 @@
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-
+  public breakpoint: number;
   constructor() { }
 
   ngOnInit() {
+    this.breakpoint = (window.innerWidth <= 960) ? 1 : 2;
   }
 
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 960) ? 1 : 2;
+  }
 }
