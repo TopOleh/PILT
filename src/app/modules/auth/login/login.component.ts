@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this._fbs.getUser(user)
     .subscribe(
       users => {
-        if (users.length === 0) {
+        if (users) {
           console.error('User does not exist');
         } else {
           localStorage.setItem('ACCESS_TOKEN', 'access_token');

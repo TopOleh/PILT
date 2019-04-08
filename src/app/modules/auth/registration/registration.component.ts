@@ -46,7 +46,7 @@ export class RegistrationComponent implements OnInit {
     this._fbs.getUser(user)
     .subscribe(
       users => {
-        if (users.length === 0) {
+        if (users) {
           this._fbs.register(user);
           localStorage.setItem('ACCESS_TOKEN', 'access_token');
         } else {
