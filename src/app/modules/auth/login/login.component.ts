@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     .subscribe(
       users => {
         if (users) {
-          console.error('User does not exist');
-        } else {
           localStorage.setItem('ACCESS_TOKEN', 'access_token');
           this._router.navigateByUrl('user');
+        } else {
+          console.error('User does not exist');
         }
       },
       err => console.error('Login error :', err)

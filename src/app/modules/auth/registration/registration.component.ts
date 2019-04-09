@@ -37,7 +37,6 @@ export class RegistrationComponent implements OnInit {
 
   public submitRegistration(user: NewUser): void {
     this.isSubmited = true;
-    console.log('this.registerForm.value :', user);
 
     if (this.registerForm.invalid) {
       return;
