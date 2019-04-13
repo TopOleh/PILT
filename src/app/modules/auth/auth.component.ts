@@ -11,10 +11,10 @@ export class AuthComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 960) ? 1 : 2;
+    this.breakpoint = (window.innerWidth <= 959) ? 1 : 2;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 960) ? 1 : 2;
+    this.breakpoint = (event.target.innerWidth <= 959) ? 1 : 2;
   }
 }
