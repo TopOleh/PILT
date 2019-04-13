@@ -46,12 +46,12 @@ export class RegistrationComponent implements OnInit {
     .subscribe(
       users => {
         if (users) {
-          this._fbs.register(user);
-          localStorage.setItem('ACCESS_TOKEN', 'access_token');
-        } else {
           console.error('User already exist');
+        } else {
+          this._fbs.register(user);
         }
       },
+
       err => console.error('Register error :', err)
     );
   }

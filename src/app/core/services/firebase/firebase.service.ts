@@ -36,12 +36,17 @@ export class FirebaseService {
     return this._afs.collection<NewUser>('users', ref => ref.where('email', '==', user.email))
     .valueChanges()
     .pipe(
-      map((_user: NewUser[]) => _user.shift())
+      map((_users: NewUser[]) => {
+          return _users.shift();
+      })
     )
     .pipe(
       map( (_user: NewUser) => {
-        localStorage.setItem('currentUser', JSON.stringify(_user));
-        this._currentUserSubject.next(_user);
+        if (_user) {
+          localStorage.setItem('currentUser', JSON.stringify(_user));
+          this._currentUserSubject.next(_user);
+        }
+
         return _user;
       })
     );
