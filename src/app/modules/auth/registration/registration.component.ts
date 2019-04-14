@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   public isSubmited: boolean = false;
   public hide: boolean = true;
   public genders: string[] = ['Male', 'Female', 'Incognito'];
+  public returnUrl: string;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -23,12 +24,15 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this._formBuilder.group({
-      age: ['22', Validators.required],
-      name: ['Olko', Validators.required],
+      age: ['18', Validators.required],
+      name: ['Name', Validators.required],
       gender: ['', Validators.required],
-      email: ['dgtop1@email.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required, Validators.minLength(this.minLengthPassword)]]
+      email: ['your@email.com', [Validators.required, Validators.email]],
+      password: ['888888', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
+
+    // get return url from the route parameters or default '/'
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/user';
   }
 
   public get fc() {
@@ -49,6 +53,7 @@ export class RegistrationComponent implements OnInit {
           console.error('User already exist');
         } else {
           this._fbs.register(user);
+          this._router.navigate([this.returnUrl]);
         }
       },
 
