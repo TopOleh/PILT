@@ -27,11 +27,11 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this._formBuilder.group({
-      age: ['18', Validators.required],
-      name: ['Name', Validators.required],
+      age: ['', Validators.required],
+      name: ['', Validators.required],
       gender: ['', Validators.required],
-      email: ['your@email.com', [Validators.required, Validators.email]],
-      password: ['888888', [Validators.required, Validators.minLength(this.minLengthPassword)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
 
     // get return url from the route parameters or default '/'

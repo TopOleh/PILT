@@ -11,7 +11,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private minPasswordLength: number = 6;
-  private loading: boolean = false;
   public submitted: boolean = false;
   public loginForm: FormGroup;
   public hide: boolean = true;
@@ -31,8 +30,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
-      email: ['your@email.com', [Validators.email, Validators.required]],
-      password: ['888888', [Validators.required, Validators.minLength(this.minPasswordLength)]]
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(this.minPasswordLength)]]
     });
 
     // get return url from the route parameters or default '/'
