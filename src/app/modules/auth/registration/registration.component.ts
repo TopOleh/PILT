@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 import { NewUser } from 'src/app/core/interfaces/new-user';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'pilt-registration',
@@ -20,6 +21,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _fbs: FirebaseService,
+    private _router: Router,
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
