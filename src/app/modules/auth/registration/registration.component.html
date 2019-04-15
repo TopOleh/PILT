@@ -1,44 +1,44 @@
-<h3 class="pilt-registration-title">Registration</h3>
+<h3 class="pilt-registration-title">Зареєструватися</h3>
 <form
   [formGroup]="registerForm"
   (ngSubmit)="submitRegistration(registerForm.value)"
   class="pilt-register__form" >
 
   <mat-form-field>
-    <input matInput formControlName="email" placeholder="Email" type="email">
-    <mat-error *ngIf="!!fc.email.invalid && !fc.email.errors.required">Email is invalid!</mat-error>
-    <mat-error *ngIf="!!fc.email.invalid && !!fc.email.errors.required">Email is required!</mat-error>
+    <input matInput formControlName="email" placeholder="Пошта" type="email">
+    <mat-error *ngIf="!!fc.email.invalid && !fc.email.errors.required">Пошту введено неправильно!</mat-error>
+    <mat-error *ngIf="!!fc.email.invalid && !!fc.email.errors.required">Пошта обов'язкова!</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' :
+    <input matInput formControlName="password" placeholder="Пароль" [type]="hide ? 'password' :
     'text'">
     <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    <mat-hint>At least six chars!</mat-hint>
-    <mat-error *ngIf="!!fc.password.invalid && !fc.password.errors.required">Password is invalid, at least six chars!</mat-error>
-    <mat-error *ngIf="!!fc.password.invalid && !!fc.password.errors.required">Password is required!</mat-error>
+    <mat-hint>Мінімум 6 знаків</mat-hint>
+    <mat-error *ngIf="!!fc.password.invalid && !fc.password.errors.required">Пароль введено неправильно, хоча б 6 знаків!</mat-error>
+    <mat-error *ngIf="!!fc.password.invalid && !!fc.password.errors.required">Пароль обов'язковий!</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput formControlName="name" placeholder="Name" type="text">
-    <mat-error *ngIf="!!fc.name.errors.required">Name is required!</mat-error>
+    <input matInput formControlName="name" placeholder="І'мя" type="text">
+    <mat-error *ngIf="!!fc.name.errors.required">І'мя обов'язкове!</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput class="pilt-register-age" formControlName="age" placeholder="Age" type="number">
-    <mat-error *ngIf="!!fc.age.errors.required">Age is required!</mat-error>
+    <input matInput class="pilt-register-age" formControlName="age" placeholder="Вік" type="number">
+    <mat-error *ngIf="!!fc.age.errors.required">Вік обов'язковий!</mat-error>
   </mat-form-field>
 
   <label id="pilt-register-gender">Gender</label>
   <mat-radio-group formControlName="gender" aria-labeledby="pilt-register-gender">
     <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-radio-button>
-    <mat-error *ngIf="!!fc.age.errors.required">Gender is required!</mat-error>
+    <mat-error *ngIf="!!fc.age.errors.required">Стать обов'язкова!</mat-error>
   </mat-radio-group>
 
-  <button mat-raised-button class="pilt-registration__submit" color="primary">Register</button>
+  <button mat-raised-button class="pilt-registration__submit" color="primary">Зареєструватися</button>
 </form>
 
 <h3 class="pilt-registration-login__wrapper">
-  Already registered?
-  <a routerLink="/auth/login">Login</a>
+  Вже маєте аккаунт -
+  <a routerLink="/auth/login"> Увійти</a>
 </h3>

@@ -15,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   public registerForm: FormGroup;
   public isSubmited: boolean = false;
   public hide: boolean = true;
-  public genders: string[] = ['Male', 'Female', 'Incognito'];
+  public genders: string[] = ['Чоловік', 'Жінка'];
   public returnUrl: string;
 
   constructor(

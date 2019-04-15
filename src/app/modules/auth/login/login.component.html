@@ -1,4 +1,4 @@
-<h3 class="pilt-registration-title">Login</h3>
+<h3 class="pilt-registration-title">Увійти</h3>
 <form
   [formGroup]="loginForm"
   (ngSubmit)="submitLogin(loginForm.value)"
@@ -6,21 +6,21 @@
 
     <mat-form-field>
       <input matInput formControlName="email" placeholder="Email" type="email" [ngClass]="{'is-invalid': submitted && fc.email.invalid }">
-      <mat-error *ngIf="!!fc.email.invalid && !fc.email.errors.required">Email is invalid!</mat-error>
-      <mat-error *ngIf="!!fc.email.invalid && !!fc.email.errors.required">Email is required!</mat-error>
+      <mat-error *ngIf="!!fc.email.invalid && !fc.email.errors.required">Пошту введено неправильно!</mat-error>
+      <mat-error *ngIf="!!fc.email.invalid && !!fc.email.errors.required">Пошта обов'язкова!</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      <mat-hint>At least six chars!</mat-hint>
-      <mat-error *ngIf="!!fc.password.invalid && !fc.password.errors.required">Password is invalid, at least six chars!</mat-error>
-      <mat-error *ngIf="!!fc.password.invalid && !!fc.password.errors.required">Password is required!</mat-error>
+      <mat-hint>Мінімум 6 знаків</mat-hint>
+      <mat-error *ngIf="!!fc.password.invalid && !fc.password.errors.required">Пароль введено неправильно, хоча б 6 знаків!</mat-error>
+      <mat-error *ngIf="!!fc.password.invalid && !!fc.password.errors.required">Пароль обов'язковий!</mat-error>
     </mat-form-field>
 
-    <button mat-raised-button class="pilt-registration__submit" color="primary">Log in</button>
+    <button mat-raised-button class="pilt-registration__submit" color="primary">Увійти</button>
 </form>
 <h3 class="pilt-login-registration__wrapper">
-  Still not registered, just do it!
-  <a routerLink="/auth/registration">Registration</a>
+  Все ще не зареєстрований, зроби це -
+  <a routerLink="/auth/registration"> Зареєструватися</a>
 </h3>
