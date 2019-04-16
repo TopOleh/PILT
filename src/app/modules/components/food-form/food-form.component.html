@@ -1,0 +1,32 @@
+<form [formGroup]="foodForm" (ngSubmit)="uploadFood(foodForm.value)">
+  <mat-form-field>
+    <input matInput formControlName="title" placeholder="Назва страви" type="text" value="Морква">
+    <mat-error *ngIf="!!fc.title.invalid && !!fc.title.errors.required">Назва обов'язкова!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="description" placeholder="Опис страви" type="text" value="Овоч">
+    <mat-error *ngIf="!!fc.description.invalid && !!fc.description.errors.required">Опис обов'язкова!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="status" placeholder="Статус" type="text" value="здорова їжа">
+    <mat-error *ngIf="!!fc.status.invalid && !!fc.status.errors.required">Статус обов'язковий!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="image" placeholder="Картинка" type="text" value="Поки без">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="grams" placeholder="Грам" type="number" value="100">
+    <mat-error *ngIf="!!fc.grams.invalid && !!fc.grams.errors.required">Грами обов'язкові!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="calories" placeholder="Калорії" type="number" value="12">
+    <mat-error *ngIf="!!fc.calories.invalid && !!fc.calories.errors.required">Калорійність обов'язкова!</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Завантажити страву</button>
+</form>

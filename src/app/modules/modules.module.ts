@@ -18,6 +18,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { CaloriesCalculatorComponent } from './components/calories-calculator/calories-calculator.component';
 import { CaloriesCardComponent } from './components/calories-card/calories-card.component';
 import { CaloriesDashboardComponent } from './components/calories-dashboard/calories-dashboard.component';
+import { FoodFormComponent } from './components/food-form/food-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CaloriesDashboardComponent } from './components/calories-dashboard/calo
     AlertComponent,
     CaloriesCalculatorComponent,
     CaloriesCardComponent,
-    CaloriesDashboardComponent
+    CaloriesDashboardComponent,
+    FoodFormComponent
   ],
   imports: [
     CommonModule,

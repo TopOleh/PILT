@@ -1,10 +1,25 @@
 .pilt-food-card__wrapper {
   margin: 20px;
   padding: 30px;
-  width: 400px;
+  width: 250px;
 }
 
 .pilt-food-card__form {
   align-items: center;
   display: flex;
+}
+
+.pilt-food-card {
+  &__input {
+    text-align: center;
+    width: 55px;
+  }
+
+  // &__grams {
+  //   text-align: right;
+  // }
+}
+
+.pilt-food-input__slash {
+  margin: 0 10px;
 }
