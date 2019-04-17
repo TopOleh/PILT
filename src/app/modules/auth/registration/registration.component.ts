@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   private minLengthPassword: number = 6;
 
   public registerForm: FormGroup;
-  public isSubmited: boolean = false;
+  public isSubmitted: boolean = false;
   public hide: boolean = true;
   public genders: string[] = ['Чоловік', 'Жінка'];
   public returnUrl: string;
@@ -43,7 +43,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   public submitRegistration(user: NewUser): void {
-    this.isSubmited = true;
+    this.isSubmitted = true;
 
     if (this.registerForm.invalid) {
       return;
@@ -59,7 +59,6 @@ export class RegistrationComponent implements OnInit {
           this._router.navigate([this.returnUrl]);
         }
       },
-
       err => console.error('Register error :', err)
     );
   }

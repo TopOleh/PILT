@@ -1,4 +1,7 @@
-<form [formGroup]="foodForm" (ngSubmit)="uploadFood(foodForm.value)">
+<form
+  [formGroup]="foodForm"
+  (ngSubmit)="uploadFood(foodForm.value)"
+  autocomplete="off">
   <mat-form-field>
     <input matInput formControlName="title" placeholder="Назва страви" type="text" value="Морква">
     <mat-error *ngIf="!!fc.title.invalid && !!fc.title.errors.required">Назва обов'язкова!</mat-error>

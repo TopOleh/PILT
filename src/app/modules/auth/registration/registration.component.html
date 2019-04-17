@@ -1,5 +1,6 @@
 <h3 class="pilt-registration-title">Зареєструватися</h3>
 <form
+  autocomplete="off"
   [formGroup]="registerForm"
   (ngSubmit)="submitRegistration(registerForm.value)"
   class="pilt-register__form" >
@@ -21,18 +22,18 @@
 
   <mat-form-field>
     <input matInput formControlName="name" placeholder="І'мя" type="text">
-    <mat-error *ngIf="!!fc.name.errors.required">І'мя обов'язкове!</mat-error>
+    <mat-error *ngIf="!!fc.name.invalid && !!fc.name.errors.required">І'мя обов'язкове!</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput class="pilt-register-age" formControlName="age" placeholder="Вік" type="number">
-    <mat-error *ngIf="!!fc.age.errors.required">Вік обов'язковий!</mat-error>
+    <mat-error *ngIf="!!fc.age.invalid && !!fc.age.errors.required">Вік обов'язковий!</mat-error>
   </mat-form-field>
 
   <label id="pilt-register-gender">Gender</label>
   <mat-radio-group formControlName="gender" aria-labeledby="pilt-register-gender">
     <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-radio-button>
-    <mat-error *ngIf="!!fc.age.errors.required">Стать обов'язкова!</mat-error>
+    <mat-error *ngIf="!!fc.gender.invalid && !!fc.gender.errors.required && isSubmitted">Стать обов'язкова!</mat-error>
   </mat-radio-group>
 
   <button mat-raised-button class="pilt-registration__submit" color="primary">Зареєструватися</button>

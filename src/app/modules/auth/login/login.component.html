@@ -1,5 +1,6 @@
 <h3 class="pilt-registration-title">Увійти</h3>
 <form
+  autocomplete="off"
   [formGroup]="loginForm"
   (ngSubmit)="submitLogin(loginForm.value)"
   class="pilt-login__form">

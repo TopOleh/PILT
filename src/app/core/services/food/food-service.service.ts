@@ -34,7 +34,6 @@ export class FoodService {
       .valueChanges()
       .pipe(
         map((_food: FoodCard[]) => {
-          console.log(_food);
           return _food.shift();
         })
       );

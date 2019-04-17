@@ -1,7 +1,7 @@
 import { AlertMessage } from 'src/app/core/interfaces/alert-message';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AlertService } from 'src/app/core/services/alert.service';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
 
 @Component({
   selector: 'pilt-alert',
