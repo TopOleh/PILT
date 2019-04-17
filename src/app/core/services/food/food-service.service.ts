@@ -13,8 +13,11 @@ export class FoodService {
 
   public uploadFood(food: FoodCard): Promise<void> {
     let foodIs: boolean;
-    this.getFood(food).subscribe( res => foodIs = !!res);
-    if (!foodIs) {
+
+    this.getFood(food)
+      .subscribe( res => foodIs = !!res);
+
+    if (foodIs) {
       console.error('Food already exist');
       return;
     }
@@ -35,5 +38,10 @@ export class FoodService {
           return _food.shift();
         })
       );
+  }
+
+  public getAllDishes(): Observable<FoodCard[]> {
+    return this.afs.collection<FoodCard>('food')
+    .valueChanges();
   }
 }

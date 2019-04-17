@@ -28,8 +28,7 @@ export class FoodFormComponent implements OnInit {
     return this.foodForm.controls;
   }
 
-  public uploadFood(food: FoodCard) {
-    console.log(food);
+  public uploadFood(food: FoodCard): void {
     this.foodService.uploadFood(food);
   }
 }
