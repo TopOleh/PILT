@@ -1,4 +1,5 @@
-import { map } from 'rxjs/operators';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { map, tap, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FoodCard } from 'src/app/core/interfaces/food-card';
@@ -8,8 +9,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FoodService {
+  task: AngularFireUploadTask;
 
-  constructor(private afs: AngularFirestore) { }
+  percentage: Observable<number>;
+  snapshot: Observable<any>;
+  downloadURL: string;
+
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   public uploadFood(food: FoodCard): Promise<void> {
     let foodIs: boolean;
@@ -22,7 +28,7 @@ export class FoodService {
       return;
     }
 
-    return this.afs.collection<FoodCard>('food')
+    return this.db.collection<FoodCard>('food')
       .doc(food.title)
       .set(food)
       .then( _ => console.log('Added food', food))
@@ -30,7 +36,7 @@ export class FoodService {
   }
 
   public getFood(food: FoodCard): Observable<FoodCard> {
-    return this.afs.collection<FoodCard>('food', ref => ref.where('title', '==', food.title))
+    return this.db.collection<FoodCard>('food', ref => ref.where('title', '==', food.title))
       .valueChanges()
       .pipe(
         map((_food: FoodCard[]) => {
@@ -40,7 +46,28 @@ export class FoodService {
   }
 
   public getAllDishes(): Observable<FoodCard[]> {
-    return this.afs.collection<FoodCard>('food')
+    return this.db.collection<FoodCard>('food')
     .valueChanges();
+  }
+
+  public uploadImage(image) {
+    // The storage path
+    const path = `Food/Images/${image.name}`;
+
+    // Reference to storage bucket
+    const ref = this.storage.ref(path);
+    this.snapshot = this.storage.upload(path, image)
+      .snapshotChanges().pipe(
+        tap(console.log),
+        // The file's download URL
+        finalize( async() =>  {
+          this.downloadURL = await ref.getDownloadURL().toPromise();
+
+          // this.db.collection('files').add( { downloadURL: this.downloadURL, path });
+          console.log('downloadURL :', this.downloadURL);
+        })
+      );
+
+      this.snapshot.subscribe(_ => console.log('this.downloadURL :', this.downloadURL));
   }
 }

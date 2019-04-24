@@ -14,7 +14,7 @@ export class FirebaseService {
   public currentUser: Observable<NewUser>;
 
   constructor(
-    private _afs: AngularFirestore
+    private db: AngularFirestore
   ) {
     this._currentUserSubject = new BehaviorSubject<NewUser>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this._currentUserSubject.asObservable();
@@ -25,7 +25,7 @@ export class FirebaseService {
   }
 
   public register(user: NewUser): Promise<void> {
-    return this._afs.collection<NewUser>('users')
+    return this.db.collection<NewUser>('users')
       .doc(user.email)
       .set(user)
       .then(_ => console.log('Added user :', user))
@@ -33,7 +33,7 @@ export class FirebaseService {
   }
 
   public getUser(user: User | NewUser): Observable<NewUser> {
-    return this._afs.collection<NewUser>('users', ref => ref.where('email', '==', user.email))
+    return this.db.collection<NewUser>('users', ref => ref.where('email', '==', user.email))
     .valueChanges()
     .pipe(
       map((_users: NewUser[]) => {

@@ -31,4 +31,8 @@ export class FoodFormComponent implements OnInit {
   public uploadFood(food: FoodCard): void {
     this.foodService.uploadFood(food);
   }
+
+  public chooseImage($event) {
+    this.foodService.uploadImage($event.target.files[0]);
+  }
 }
