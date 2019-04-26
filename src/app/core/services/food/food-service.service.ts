@@ -9,12 +9,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FoodService {
-  task: AngularFireUploadTask;
-
-  percentage: Observable<number>;
-  snapshot: Observable<any>;
-  downloadURL: string;
-
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   public uploadFood(food: FoodCard): Promise<void> {
@@ -50,24 +44,16 @@ export class FoodService {
     .valueChanges();
   }
 
-  public uploadImage(image) {
+  public uploadImage(image): Observable<string> {
+    let task: AngularFireUploadTask;
+
     // The storage path
     const path = `Food/Images/${image.name}`;
+    // The main task
+    task = this.storage.upload(path, image);
 
     // Reference to storage bucket
     const ref = this.storage.ref(path);
-    this.snapshot = this.storage.upload(path, image)
-      .snapshotChanges().pipe(
-        tap(console.log),
-        // The file's download URL
-        finalize( async() =>  {
-          this.downloadURL = await ref.getDownloadURL().toPromise();
-
-          // this.db.collection('files').add( { downloadURL: this.downloadURL, path });
-          console.log('downloadURL :', this.downloadURL);
-        })
-      );
-
-      this.snapshot.subscribe(_ => console.log('this.downloadURL :', this.downloadURL));
+    return ref.getDownloadURL();
   }
 }

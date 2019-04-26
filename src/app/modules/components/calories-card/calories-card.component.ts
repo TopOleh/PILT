@@ -10,8 +10,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CaloriesCardComponent implements OnInit {
   @Input() food: FoodCard;
 
-  public allFood: FoodCard[];
-
   constructor() { }
 
   ngOnInit() {

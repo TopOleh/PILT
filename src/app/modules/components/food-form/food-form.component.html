@@ -17,8 +17,8 @@
     <mat-error *ngIf="!!fc.status.invalid && !!fc.status.errors.required">Статус обов'язковий!</mat-error>
   </mat-form-field>
 
-  <input formControlName="image" (change)='chooseImage($event)' placeholder="Картинка" type="file" value="Поки без">
-
+  <input formControlName="image" (change)='chooseImage($event)' placeholder="Картинка" type="file">
+  <img src="{{image}}">
   <mat-form-field>
     <input matInput formControlName="grams" placeholder="Грам" type="number" value="100">
     <mat-error *ngIf="!!fc.grams.invalid && !!fc.grams.errors.required">Грами обов'язкові!</mat-error>

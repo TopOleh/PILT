@@ -1,2 +1,6 @@
-<pilt-calories-card *ngFor="let food of allFood" [food]="food"></pilt-calories-card>
+<mat-grid-list cols="4" rowHeight="1:1.2" gutterSize="30px">
+  <mat-grid-tile *ngFor="let food of allFood">
+      <pilt-calories-card  [food]="food"></pilt-calories-card>
+  </mat-grid-tile>
+</mat-grid-list>
 <pilt-calories-calculator></pilt-calories-calculator>

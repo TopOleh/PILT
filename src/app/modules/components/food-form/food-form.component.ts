@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodFormComponent implements OnInit {
   public foodForm: FormGroup;
+  public isSubmitted: boolean = false;
+  public image: string;
 
   constructor(private formBuilder: FormBuilder, private foodService: FoodService) { }
 
@@ -18,7 +20,7 @@ export class FoodFormComponent implements OnInit {
       calories: ['', Validators.required],
       description: ['', Validators.required],
       grams: ['', Validators.required],
-      image: [''],
+      image: ['', Validators.required],
       status: ['', Validators.required],
       title: ['', Validators.required]
     });
@@ -28,11 +30,20 @@ export class FoodFormComponent implements OnInit {
     return this.foodForm.controls;
   }
 
-  public uploadFood(food: FoodCard): void {
+  public uploadFood(food: FoodCard) {
+    this.isSubmitted = true;
+
+    if (this.foodForm.invalid) {
+      return false;
+    }
+
+    food.image = this.image;
+    console.log(food);
     this.foodService.uploadFood(food);
   }
 
   public chooseImage($event) {
-    this.foodService.uploadImage($event.target.files[0]);
+    this.foodService.uploadImage($event.target.files[0])
+    .subscribe(res => this.image = res);
   }
 }
