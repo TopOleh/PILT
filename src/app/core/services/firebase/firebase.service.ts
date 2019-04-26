@@ -37,7 +37,12 @@ export class FirebaseService {
     .valueChanges()
     .pipe(
       map((_users: NewUser[]) => {
-          return _users.shift();
+        return _users.filter((_user: NewUser) => _user.password === user.password);
+      })
+    )
+    .pipe(
+      map((_users: NewUser[]) => {
+        return _users.shift();
       })
     )
     .pipe(

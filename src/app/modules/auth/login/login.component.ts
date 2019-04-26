@@ -22,16 +22,16 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute
     ) {
-      // // redirect to home if already logged in
-      // if (this._fbs.currentUserValue) {
-      //   this._router.navigate(['/']);
-      // }
+      // redirect to home if already logged in
+      if (this._fbs.currentUserValue) {
+        this._router.navigate(['/']);
+      }
     }
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(this.minPasswordLength)]]
+      email: ['dgtop@email', [Validators.email, Validators.required]],
+      password: ['123456', [Validators.required, Validators.minLength(this.minPasswordLength)]]
     });
 
     // get return url from the route parameters or default '/'
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         if (users) {
           this._router.navigate([this.returnUrl]);
         } else {
-          console.error('User does not exist');
+          console.error('Wrong email or password');
         }
       },
 
