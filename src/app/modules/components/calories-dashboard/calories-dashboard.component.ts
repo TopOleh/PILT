@@ -9,8 +9,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./calories-dashboard.component.scss']
 })
 export class CaloriesDashboardComponent implements OnInit, OnDestroy {
-  public allFood: FoodCard[] = [];
   private subscription: Subscription;
+  public allFood: FoodCard[] = [];
+
   constructor(private foodService: FoodService) { }
 
   ngOnInit() {
