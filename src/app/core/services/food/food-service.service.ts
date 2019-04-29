@@ -1,5 +1,5 @@
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { map, tap, finalize } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FoodCard } from 'src/app/core/interfaces/food-card';
@@ -44,16 +44,16 @@ export class FoodService {
     .valueChanges();
   }
 
-  public uploadImage(image): Observable<string> {
+  async uploadImage(image) {
     let task: AngularFireUploadTask;
-
     // The storage path
     const path = `Food/Images/${image.name}`;
+    // Reference to storage bucket
+    const ref = this.storage.ref(path);
     // The main task
     task = this.storage.upload(path, image);
 
-    // Reference to storage bucket
-    const ref = this.storage.ref(path);
-    return ref.getDownloadURL();
+    await task;
+    return ref.getDownloadURL().toPromise();
   }
 }

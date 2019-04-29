@@ -44,6 +44,6 @@ export class FoodFormComponent implements OnInit {
 
   public chooseImage($event) {
     this.foodService.uploadImage($event.target.files[0])
-    .subscribe(res => this.image = res);
+    .then(res => this.image = res);
   }
 }
