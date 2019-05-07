@@ -9,6 +9,7 @@ import { HomeComponent } from 'src/app/modules/home/home.component';
 import { AuthComponent } from 'src/app/modules/auth/auth.component';
 import { LoginComponent } from 'src/app/modules/auth/login/login.component';
 import { RegistrationComponent } from 'src/app/modules/auth/registration/registration.component';
+import { UserFoodTableComponent } from 'src/app/modules/components/user-food-table/user-food-table.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, canActivate: [AuthGuard], children:[
     {path: 'new-card', component: FoodFormComponent },
     {path: 'food-search', component: CaloriesDashboardComponent },
+    {path: 'user-table', component: UserFoodTableComponent }
   ]},
   { path: 'auth', component: AuthComponent, children: [
     { path: '', redirectTo: 'login', pathMatch: 'full' },

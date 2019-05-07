@@ -8,6 +8,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatRadioModule,
     MatButtonModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -31,7 +35,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatRadioModule,
     MatButtonModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule
   ]
 })
 export class MaterialModule { }

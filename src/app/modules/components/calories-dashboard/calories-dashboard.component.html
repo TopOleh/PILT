@@ -1,4 +1,4 @@
 <div class="pilt-cards__grid">
-  <pilt-calories-card *ngFor="let food of allFood" [food]="food"></pilt-calories-card>
+  <pilt-calories-card (sendFood)="reciveFood($event)"  *ngFor="let food of allFood" [food]="food"></pilt-calories-card>
 </div>
 <pilt-calories-calculator></pilt-calories-calculator>

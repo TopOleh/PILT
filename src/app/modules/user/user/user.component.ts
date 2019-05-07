@@ -9,7 +9,8 @@ export class UserComponent implements OnInit {
   public menuList: {path: string, title: string}[] = [
     { path: '/user', title: 'Користувач'},
     { path: '/user/new-card', title: 'Створити нову картку'},
-    { path: '/user/food-search', title: 'Уся їжа'}
+    { path: '/user/food-search', title: 'Уся їжа'},
+    { path: '/user/user-table', title: 'Твоє меню'}
   ];
   constructor() { }
 

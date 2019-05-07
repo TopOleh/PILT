@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class CaloriesDashboardComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   public allFood: FoodCard[] = [];
+  private userFood: FoodCard[] = JSON.parse(localStorage.getItem('User food')) || [];
 
   constructor(private foodService: FoodService) { }
 
@@ -21,5 +22,11 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  reciveFood(food: FoodCard) {
+    this.userFood.push(food);
+    console.log('array :', this.userFood);
+    localStorage.setItem('User food', JSON.stringify(this.userFood));
   }
 }
