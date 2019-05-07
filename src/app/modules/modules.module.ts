@@ -14,8 +14,6 @@ import { AppRoutingModule } from 'src/app/shared/routing/app-routing.module';
 import { UserComponent } from './user/user/user.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
-import { AlertComponent } from './components/alert/alert.component';
-import { CaloriesCalculatorComponent } from './components/calories-calculator/calories-calculator.component';
 import { CaloriesCardComponent } from './components/calories-card/calories-card.component';
 import { CaloriesDashboardComponent } from './components/calories-dashboard/calories-dashboard.component';
 import { FoodFormComponent } from './components/food-form/food-form.component';
@@ -30,8 +28,6 @@ import { UserFoodTableComponent } from './components/user-food-table/user-food-t
     UserComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    AlertComponent,
-    CaloriesCalculatorComponent,
     CaloriesCardComponent,
     CaloriesDashboardComponent,
     FoodFormComponent,
