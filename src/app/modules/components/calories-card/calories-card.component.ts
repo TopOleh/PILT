@@ -19,11 +19,11 @@ export class CaloriesCardComponent implements OnInit {
   }
 
   public calcGrams(calories: number): number {
-    return calories / this.caloriesPerGram ;
+    return parseFloat((calories / this.caloriesPerGram ).toFixed(2));
   }
 
   public calcCalories(grams: number): number {
-    return this.caloriesPerGram * grams;
+    return parseFloat((this.caloriesPerGram * grams).toFixed(2));
   }
 
   public addFood(food: FoodCard): void {

@@ -11,13 +11,13 @@
 
   <mat-card-content>
       <mat-form-field class="pilt-food-card__input">
-        <input matInput placeholder="калорій" [(ngModel)]="food.calories" (input)="food.grams = calcGrams(food.calories).toFixed(2)" [ngModelOptions]="{standalone: true}">
+        <input matInput type="number" placeholder="калорій" [(ngModel)]="food.calories" (input)="food.grams = calcGrams(food.calories)" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
       <span class="pilt-food-input__slash">/</span>
 
       <mat-form-field class="pilt-food-card__input pilt-food-card__grams">
-        <input matInput placeholder="грам" [(ngModel)]="food.grams" (input)="food.calories = calcCalories(food.grams).toFixed(2)" [ngModelOptions]="{standalone: true}">
+        <input matInput type="number" placeholder="грам" [(ngModel)]="food.grams" (input)="food.calories = calcCalories(food.grams)" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
   </mat-card-content>
 
