@@ -14,11 +14,6 @@
       <mat-error *ngIf="!!fc.description.invalid && !!fc.description.errors.required">Опис обов'язкова!</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-      <input matInput formControlName="status" placeholder="Статус" type="text" value="здорова їжа">
-      <mat-error *ngIf="!!fc.status.invalid && !!fc.status.errors.required">Статус обов'язковий!</mat-error>
-    </mat-form-field>
-
     <input formControlName="image" (change)='chooseImage($event)' placeholder="Картинка" type="file">
     <img src="{{image}}">
     <mat-form-field>

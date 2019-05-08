@@ -19,7 +19,7 @@ const routes: Routes = [
     {path: 'food-search', component: CaloriesDashboardComponent },
     {path: 'user-table', component: UserFoodTableComponent }
   ]},
-  { path: 'auth', component: AuthComponent, children: [
+  { path: 'home/auth', component: AuthComponent, children: [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'registration', component: RegistrationComponent }

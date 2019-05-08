@@ -3,6 +3,5 @@ export interface FoodCard {
   description: string;
   grams: number;
   image?: string;
-  status: string;
   title: string;
 }

@@ -21,7 +21,6 @@ export class FoodFormComponent implements OnInit {
       description: ['', Validators.required],
       grams: ['', Validators.required],
       image: ['', Validators.required],
-      status: ['', Validators.required],
       title: ['', Validators.required]
     });
   }
