@@ -24,9 +24,8 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  reciveFood(food: FoodCard) {
+  public reciveFood(food: FoodCard): void {
     this.userFood.push(food);
-    console.log('array :', this.userFood);
     localStorage.setItem('User food', JSON.stringify(this.userFood));
   }
 }

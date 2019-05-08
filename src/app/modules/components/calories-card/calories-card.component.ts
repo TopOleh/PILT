@@ -10,13 +10,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CaloriesCardComponent implements OnInit {
   @Input() food: FoodCard;
   @Output() sendFood = new EventEmitter<FoodCard>();
+  public caloriesPerGram: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.caloriesPerGram = this.food.calories / 100;
   }
 
-  public addFood() {
-    this.sendFood.emit(this.food);
+  public calcGrams(calories: number): number {
+    return calories / this.caloriesPerGram ;
+  }
+
+  public calcCalories(grams: number): number {
+    return this.caloriesPerGram * grams;
+  }
+
+  public addFood(food: FoodCard): void {
+    this.sendFood.emit(food);
   }
 }

@@ -1,4 +1,3 @@
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,8 +15,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     ModulesModule,
     CoreModule,
-    SharedModule,
-    FormsModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

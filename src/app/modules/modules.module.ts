@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 
 import { FirebaseModule } from './firebase/firebase.module';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/shared/routing/app-routing.module';
 
 import { UserComponent } from './user/user/user.component';
@@ -38,7 +38,8 @@ import { UserFoodTableComponent } from './components/user-food-table/user-food-t
     FirebaseModule,
     MaterialModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   exports: [ AuthComponent, HomeComponent ]
 })
