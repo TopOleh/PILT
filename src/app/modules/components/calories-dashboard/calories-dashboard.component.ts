@@ -10,8 +10,9 @@ import { Subscription } from 'rxjs';
 })
 export class CaloriesDashboardComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  public allFood: FoodCard[] = [];
   private userFood: FoodCard[];
+  public allFood: FoodCard[] = [];
+  public searchText: string;
 
   constructor(private foodService: FoodService) { }
 

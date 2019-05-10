@@ -19,6 +19,8 @@ import { CaloriesDashboardComponent } from './components/calories-dashboard/calo
 import { FoodFormComponent } from './components/food-form/food-form.component';
 import { UserFoodTableComponent } from './components/user-food-table/user-food-table.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -39,7 +41,8 @@ import { UserFoodTableComponent } from './components/user-food-table/user-food-t
     MaterialModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   exports: [ AuthComponent, HomeComponent ]
 })
