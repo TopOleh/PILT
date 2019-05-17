@@ -25,7 +25,7 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public reciveFood(food: FoodCard): void {
+  public receiveFood(food: FoodCard): void {
     this.userFood = JSON.parse(localStorage.getItem('User food')) || [];
     this.userFood.push(food);
     localStorage.setItem('User food', JSON.stringify(this.userFood));
