@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AuthGuard } from 'src/app/core/guards/auth/auth.guard';
-
-import { FoodComponent } from 'src/app/modules/food/food.component';
-import { CaloriesDashboardComponent } from 'src/app/modules/food/components/calories-dashboard/calories-dashboard.component';
-import { FoodFormComponent } from 'src/app/modules/food/components/food-form/food-form.component';
-import { HomeComponent } from 'src/app/modules/home/home.component';
-import { UserFoodTableComponent } from 'src/app/modules/food/components/user-food-table/user-food-table.component';
+import { PageNotFoundComponent } from './layout/components';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

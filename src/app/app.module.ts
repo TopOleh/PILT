@@ -9,20 +9,23 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { Router } from '@angular/router';
+import { FirebaseModule } from './core/modules/firebase/firebase.module';
+import { HeaderComponent, FooterComponent } from './layout';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
+    FirebaseModule,
     ModulesModule,
     LayoutModule,
     CoreModule,
     SharedModule,
-    AuthRoutingModule,
     // Must be the last
     AppRoutingModule
   ],
