@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent, LoginComponent, RegistrationComponent } from './auth';
 import { HomeComponent } from './home/home.component';
 
-import { FirebaseModule } from './firebase/firebase.module';
-import { MaterialModule } from './material/material.module';
+import { FirebaseModule } from '../core/modules/firebase/firebase.module';
+import { MaterialModule } from '../core/modules/material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
