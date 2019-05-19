@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     ) {
       // redirect to home if already logged in
       if (this._fbs.currentUserValue) {
-        this._router.navigate(['/user']);
+        this._router.navigate(['/food']);
       }
     }
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     });
 
     // get return url from the route parameters or default '/'
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/user';
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/food';
   }
 
   public get fc() {

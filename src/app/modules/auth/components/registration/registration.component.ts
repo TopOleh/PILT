@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
     });
 
     // get return url from the route parameters or default '/'
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/user';
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/food';
   }
 
   public get fc() {
