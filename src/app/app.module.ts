@@ -1,3 +1,4 @@
+import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,6 +19,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     ModulesModule,
     CoreModule,
     SharedModule,
+    AuthRoutingModule,
     // Must be the last
     AppRoutingModule
   ],
