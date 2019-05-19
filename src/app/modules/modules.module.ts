@@ -9,11 +9,11 @@ import { MaterialModule } from '../core/modules/material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
-import { FoodComponent } from './user/user/food.component';
-import { CaloriesCardComponent } from './components/calories-card/calories-card.component';
-import { CaloriesDashboardComponent } from './components/calories-dashboard/calories-dashboard.component';
-import { FoodFormComponent } from './components/food-form/food-form.component';
-import { UserFoodTableComponent } from './components/user-food-table/user-food-table.component';
+import { FoodComponent } from './food/food.component';
+import { CaloriesCardComponent } from './food/components/calories-card/calories-card.component';
+import { CaloriesDashboardComponent } from './food/components/calories-dashboard/calories-dashboard.component';
+import { FoodFormComponent } from './food/components/food-form/food-form.component';
+import { UserFoodTableComponent } from './food/components/user-food-table/user-food-table.component';
 
 @NgModule({
   declarations: [

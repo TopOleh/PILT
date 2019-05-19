@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from 'src/app/core/guards/auth/auth.guard';
 
-import { FoodComponent } from 'src/app/modules/user/user/food.component';
-import { CaloriesDashboardComponent } from 'src/app/modules/components/calories-dashboard/calories-dashboard.component';
-import { FoodFormComponent } from 'src/app/modules/components/food-form/food-form.component';
+import { FoodComponent } from 'src/app/modules/food/food.component';
+import { CaloriesDashboardComponent } from 'src/app/modules/food/components/calories-dashboard/calories-dashboard.component';
+import { FoodFormComponent } from 'src/app/modules/food/components/food-form/food-form.component';
 import { HomeComponent } from 'src/app/modules/home/home.component';
-import { UserFoodTableComponent } from 'src/app/modules/components/user-food-table/user-food-table.component';
+import { UserFoodTableComponent } from 'src/app/modules/food/components/user-food-table/user-food-table.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},

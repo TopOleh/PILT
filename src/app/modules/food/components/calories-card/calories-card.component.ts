@@ -1,4 +1,4 @@
-import { FoodCard } from './../../../core/interfaces/food-card';
+import { FoodCard } from 'src/app/core/interfaces/food-card';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
