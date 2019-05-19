@@ -11,12 +11,6 @@ import { UserFoodTableComponent } from 'src/app/modules/food/components/user-foo
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent },
-  { path: 'food', component: FoodComponent, canActivate: [AuthGuard], children:[
-    {path: 'new-card', component: FoodFormComponent },
-    {path: 'food-search', component: CaloriesDashboardComponent },
-    {path: 'food-table', component: UserFoodTableComponent }
-  ]}
 ];
 
 @NgModule({

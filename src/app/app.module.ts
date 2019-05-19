@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,4 +29,8 @@ import { AuthRoutingModule } from './modules/auth/auth-routing.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor( private router: Router) {
+    console.log('Routes :', JSON.stringify(router.config, undefined, 2));
+  }
+}

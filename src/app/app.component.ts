@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'play-in-life-together';
+  public onActivate($event): void {
+    console.log('Activated component :', $event);
+  }
+
+  public onDeactivate($event): void {
+    console.log('Activated component :', $event);
+  }
 }
