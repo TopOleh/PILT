@@ -1,3 +1,11 @@
-<p>
-  header works!
-</p>
+<mat-tab-group>
+  <mat-tab *ngFor="let route of menuList" >
+    <ng-template mat-tab-label>
+       <a routerLink="{{route.path}}">
+        <mat-icon>{{route.icon}}</mat-icon>
+        {{route.title}}
+      </a>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet>

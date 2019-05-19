@@ -1,3 +1,4 @@
+import { MaterialModule } from './core/modules/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,7 @@ import { HeaderComponent, FooterComponent } from './layout';
   imports: [
     BrowserModule,
     FirebaseModule,
+    MaterialModule,
     ModulesModule,
     LayoutModule,
     CoreModule,

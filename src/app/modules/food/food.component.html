@@ -1,7 +1,1 @@
-<button mat-button [matMenuTriggerFor]="menuRef">Меню</button>
-
-<mat-menu #menuRef="matMenu">
-      <a mat-menu-item *ngFor="let item of menuList"routerLink="{{item.path}}">{{item.title}}</a>
-</mat-menu>
-
 <router-outlet></router-outlet>
