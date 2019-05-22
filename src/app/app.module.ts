@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { ModulesModule } from './modules/modules.module';
 import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
@@ -27,7 +26,6 @@ import { HeaderComponent, FooterComponent } from './layout';
     ModulesModule,
     LayoutModule,
     CoreModule,
-    SharedModule,
     // Must be the last
     AppRoutingModule
   ],
