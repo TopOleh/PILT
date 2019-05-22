@@ -1,5 +1,5 @@
+import { AuthService } from 'src/app/modules/auth/services';
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/core/interfaces/user';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,25 +17,25 @@ export class LoginComponent implements OnInit {
   public returnUrl: string;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private _fbs: FirebaseService,
-    private _router: Router,
-    private _route: ActivatedRoute
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
     ) {
       // redirect to home if already logged in
-      if (this._fbs.currentUserValue) {
-        this._router.navigate(['/food']);
+      if (this.authService.currentUserValue) {
+        this.router.navigate(['/food']);
       }
     }
 
   ngOnInit() {
-    this.loginForm = this._formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: ['dgtop@email', [Validators.email, Validators.required]],
       password: ['123456', [Validators.required, Validators.minLength(this.minPasswordLength)]]
     });
 
     // get return url from the route parameters or default '/'
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/food';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/food';
   }
 
   public get fc() {
@@ -49,11 +49,11 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this._fbs.getUser(user)
+    this.authService.getUser(user)
     .subscribe(
       users => {
         if (users) {
-          this._router.navigate([this.returnUrl]);
+          this.router.navigate([this.returnUrl]);
         } else {
           console.error('Wrong email or password');
         }

@@ -1,4 +1,4 @@
-import { MaterialModule } from './core/modules/material/material.module';
+import { MaterialModule } from './core/modules';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
-import { FirebaseModule } from './core/modules/firebase/firebase.module';
+import { FirebaseModule } from './core/modules';
 import { HeaderComponent, FooterComponent } from './layout';
 
 @NgModule({

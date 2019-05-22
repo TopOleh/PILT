@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 import { NewUser } from 'src/app/core/interfaces/new-user';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { AuthService } from '../../services';
 
 @Component({
   selector: 'pilt-registration',
@@ -19,14 +20,14 @@ export class RegistrationComponent implements OnInit {
   public returnUrl: string;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private _fbs: FirebaseService,
-    private _router: Router,
-    private _route: ActivatedRoute
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.registerForm = this._formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       age: ['', Validators.required],
       name: ['', Validators.required],
       gender: ['', Validators.required],
@@ -35,7 +36,7 @@ export class RegistrationComponent implements OnInit {
     });
 
     // get return url from the route parameters or default '/'
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/food';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/food';
   }
 
   public get fc() {
@@ -49,18 +50,17 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this._fbs.getUser(user)
+    this.authService.getUser(user)
     .subscribe(
       users => {
         if (users) {
           console.error('User already exist');
         } else {
-          this._fbs.register(user);
-          this._router.navigate([this.returnUrl]);
+          this.authService.register(user);
+          this.router.navigate([this.returnUrl]);
         }
       },
       err => console.error('Register error :', err)
     );
   }
-
 }

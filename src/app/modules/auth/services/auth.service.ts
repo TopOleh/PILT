@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 
-export class FirebaseService {
+export class AuthService {
   private _currentUserSubject: BehaviorSubject<NewUser>;
   public currentUser: Observable<NewUser>;
 

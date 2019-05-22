@@ -1,5 +1,5 @@
 import { FoodCard } from 'src/app/core/interfaces/food-card';
-import { FoodService } from 'src/app/core/services/food/food-service.service';
+import { FoodService } from 'src/app/modules/food/services/food-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 

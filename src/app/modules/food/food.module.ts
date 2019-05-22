@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FoodRoutingModule } from './food-routing.module';
 
-import { MaterialModule } from 'src/app/core/modules/material/material.module';
+import { MaterialModule } from 'src/app/core/modules';
 
 import { FoodComponent,
   CaloriesCardComponent,

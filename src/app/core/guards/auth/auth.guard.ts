@@ -1,7 +1,7 @@
-import { FirebaseService } from 'src/app/core/services/firebase/firebase.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/modules/auth/services';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private _firebaseService: FirebaseService,
-    private _router: Router
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const currentUser = this._firebaseService.currentUserValue;
+    const currentUser = this.authService.currentUserValue;
 
     if (currentUser) {
       // authorised so return true
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // not logged in so redirect to login page with the return url
-    this._router.navigate(['auth/login'], { queryParams: { returnUrl: state.url }});
+    this.router.navigate(['auth/login'], { queryParams: { returnUrl: state.url }});
     return false;
   }
 }
