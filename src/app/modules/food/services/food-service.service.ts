@@ -1,5 +1,5 @@
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FoodCard } from 'src/app/core/interfaces/food-card';
@@ -12,12 +12,12 @@ export class FoodService {
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   public uploadFood(food: FoodCard): Promise<void> {
-    let foodIs: boolean;
-
-    this.getFood(food)
-      .subscribe( res => foodIs = !!res);
-
-    if (foodIs) {
+    let foodIs: Observable<boolean>;
+    foodIs = this.getFood(food)
+    .pipe(
+      map(res => !!res)
+      );
+    if (!foodIs) {
       console.error('Food already exist');
       return;
     }
