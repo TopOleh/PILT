@@ -14,6 +14,7 @@ export class CaloriesDashboardComponent implements OnInit {
   public searchText: string;
 
   constructor(private foodService: FoodService) { }
+  public query: string;
 
   ngOnInit() {
     this.allFood = this.foodService.getAllDishes();

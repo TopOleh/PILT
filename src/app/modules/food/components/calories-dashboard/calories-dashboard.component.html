@@ -1,3 +1,4 @@
+<input type="text" [(ngModel)]="query">
 <div class="pilt-cards__grid">
-  <pilt-calories-card (sendFood)="receiveFood($event)"  *ngFor="let food of allFood | async" [food]="food"></pilt-calories-card>
+  <pilt-calories-card (sendFood)="receiveFood($event)"  *ngFor="let food of allFood | async | filter: query" [food]="food"></pilt-calories-card>
 </div>
