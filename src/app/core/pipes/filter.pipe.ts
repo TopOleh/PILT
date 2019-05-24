@@ -10,15 +10,11 @@ export class FilterPipe implements PipeTransform {
       if (!value) {
         return foodArr;
       } else  {
-        return foodArr.filter((food: FoodCard) => {
-        if(!food.title) {
-          console.log('value :', value);
-          console.log('food :', food);
-        }
-        return food.calories.toString().toLowerCase().match(value.toLocaleLowerCase()) ||
+        return foodArr.filter((food: FoodCard) =>
+          food.calories.toString().toLowerCase().match(value.toLocaleLowerCase()) ||
           food.title.toLowerCase().match(value.toLocaleLowerCase()) ||
           food.grams.toString().toLowerCase().match(value.toLocaleLowerCase()) ||
-          food.description.toLowerCase().match(value.toLocaleLowerCase())}
+          food.description.toLowerCase().match(value.toLocaleLowerCase())
         );
       }
     }
