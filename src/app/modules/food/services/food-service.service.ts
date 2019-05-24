@@ -41,7 +41,23 @@ export class FoodService {
 
   public getAllDishes(): Observable<FoodCard[]> {
     return this.db.collection<FoodCard>('food')
-    .valueChanges();
+    .valueChanges()
+    .pipe(
+      map(
+        (foodAmount: FoodCard[]) => foodAmount
+          .map((food: FoodCard) => {
+            food.calPerGram = food.calories / 100;
+            return food;
+          }))
+    );
+  }
+
+  public calcCalories(food: FoodCard): number {
+    return food.grams * food.calPerGram;
+  }
+
+  public calcGrams(food: FoodCard): number {
+    return +(food.calories / food.calPerGram).toFixed(2);
   }
 
   async uploadImage(image) {
