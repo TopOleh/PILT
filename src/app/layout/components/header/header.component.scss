@@ -6,3 +6,33 @@
   right: 0;
   z-index: 1;
 }
+.pilt-navigation {
+  padding: 30px;
+
+  & &__menu {
+    display: flex;
+    list-style: none;
+  }
+
+  & &__item {
+    padding-right: 15px;
+  }
+
+  & &__dropdown {
+    background-color: #61de69;
+    border-radius: 5px;
+    display: none;
+    list-style: none;
+    position: absolute;
+    transform: translateX(-30%);
+    z-index: 1;
+  }
+
+  & &-dropdown__item {
+    padding: 15px;
+  }
+
+  & &-dropdown__link {
+    color: #fff;
+  }
+}
