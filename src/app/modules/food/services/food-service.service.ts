@@ -53,7 +53,7 @@ export class FoodService {
   }
 
   public calcCalories(food: FoodCard): number {
-    return food.grams * food.calPerGram;
+    return +(food.grams * food.calPerGram).toFixed(2);
   }
 
   public calcGrams(food: FoodCard): number {
