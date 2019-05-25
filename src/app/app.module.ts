@@ -12,7 +12,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Router } from '@angular/router';
 import { FirebaseModule } from './core/modules';
 import { HeaderComponent, FooterComponent } from './layout';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { SharedModule } from './shared/shared.module';
     ModulesModule,
     LayoutModule,
     CoreModule,
-    SharedModule,
     // Must be the last
     AppRoutingModule
   ],
