@@ -5,7 +5,7 @@ import { FoodService } from 'src/app/modules/food/services/food-service.service'
 
 // rxjs
 import { Subscription } from 'rxjs';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pilt-calories-dashboard',
@@ -21,10 +21,12 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
 
   private userFood: FoodCard[];
   private subscription: Subscription;
+  private durationSnackBar: number = 2;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) pagination: MatPaginator;
 
-  constructor(public foodService: FoodService) { }
+  constructor(public foodService: FoodService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.subscription = this.foodService.getAllDishes()
@@ -38,10 +40,11 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public receiveFood(food: FoodCard): void {
+  public addFood(food: FoodCard): void {
     this.userFood = JSON.parse(localStorage.getItem('User food')) || [];
     this.userFood.push(food);
     localStorage.setItem('User food', JSON.stringify(this.userFood));
+    this.openSnackBar();
   }
 
   public applyFilter(filterValue: string): void {
@@ -50,5 +53,11 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  private openSnackBar(): void {
+    this.snackBar.open('Страву додано!', 'Х' , {
+      duration: this.durationSnackBar * 1000
+    });
   }
 }
