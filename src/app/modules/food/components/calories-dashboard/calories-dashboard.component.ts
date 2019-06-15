@@ -18,6 +18,7 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
   public query: string;
   public dataSource = new MatTableDataSource();
   public displayedColumns: string[] = ['title', 'description', 'grams', 'calories', 'add'];
+  public mobile: boolean = false;
 
   private userFood: FoodCard[];
   private subscription: Subscription;
@@ -34,6 +35,8 @@ export class CaloriesDashboardComponent implements OnInit, OnDestroy {
 
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.pagination;
+
+    this.mobile = window.innerWidth < 640 ? true : false;
   }
 
   ngOnDestroy() {

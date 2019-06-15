@@ -8,8 +8,8 @@
 
       <!-- Title Column -->
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Назва</th>
-        <td mat-cell *matCellDef="let food">{{food.title}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="pilt-dashboard-food__name">Назва</th>
+        <td mat-cell *matCellDef="let food" class="pilt-dashboard-food__name">{{food.title}}</td>
       </ng-container>
 
       <!-- Description Column -->
@@ -22,18 +22,27 @@
       <ng-container matColumnDef="grams">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Грами</th>
         <td mat-cell *matCellDef="let food">
-          <mat-form-field>
-            <input type="number" matInput [(ngModel)]="food.grams" (input)="food.calories = foodService.calcCalories(food)">
+          <mat-form-field class="pilt-dashboard__input">
+            <input type="number" matInput [(ngModel)]="food.grams"
+              (input)="food.calories = foodService.calcCalories(food)" min="0" />
           </mat-form-field>
         </td>
       </ng-container>
 
       <!-- Calories Column -->
       <ng-container matColumnDef="calories">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Калорійність</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span *ngIf="mobile; else caloriesMobile">
+            Ккал
+          </span>
+          <ng-template #caloriesMobile>
+            Калорійність
+          </ng-template>
+        </th>
         <td mat-cell *matCellDef="let food">
-          <mat-form-field>
-            <input type="number" matInput [(ngModel)]="food.calories" (input)="food.grams = foodService.calcGrams(food)">
+          <mat-form-field class="pilt-dashboard__input">
+            <input type="number" matInput [(ngModel)]="food.calories" (input)="food.grams = foodService.calcGrams(food)"
+              min="0">
           </mat-form-field>
         </td>
       </ng-container>
@@ -42,7 +51,10 @@
       <ng-container matColumnDef="add">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let food">
-          <button mat-button (click)="addFood(food)">Додати</button>
+          <button mat-button (click)="addFood(food)">
+            <span *ngIf="mobile; else addText">+</span>
+            <ng-template #addText>Додати</ng-template>
+          </button>
         </td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>

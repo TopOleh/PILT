@@ -4,6 +4,7 @@
   align-items: center;
 
   & &__filter {
+    padding: 0 27px;
     width: 100%;
   }
 
@@ -15,4 +16,11 @@
     }
   }
 
+  & &__input {
+    width: 40px;
+  }
+
+  & &-food__name {
+    padding-left: 10px;
+  }
 }
