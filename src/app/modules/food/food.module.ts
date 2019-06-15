@@ -8,7 +8,7 @@ import { FoodRoutingModule } from './food-routing.module';
 import { MaterialModule } from 'src/app/core/modules';
 
 import { FoodComponent,
-  CaloriesDashboardComponent,
+  AllFoodComponent,
   FoodFormComponent,
   UserFoodTableComponent
   } from './';
@@ -16,7 +16,7 @@ import { FoodComponent,
 @NgModule({
   declarations: [
     FoodComponent,
-    CaloriesDashboardComponent,
+    AllFoodComponent,
     FoodFormComponent,
     UserFoodTableComponent
   ],

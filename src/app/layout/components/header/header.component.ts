@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     { path: '/home', title: '', icon: 'home'},
     { path: '/food', title: 'Їжа', icon: 'fastfood', childLinks: [
       { path: 'food/new-card', title: 'Створити нову картку'},
-      { path: '/food/food-search', title: 'Вся їжа'},
+      { path: '/food/all-food', title: 'Вся їжа'},
       { path: '/food/food-table', title: 'Твоє меню'}
     ]}
   ];

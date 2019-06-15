@@ -8,11 +8,11 @@ import { Subscription } from 'rxjs';
 import { MatTableDataSource, MatSort, MatPaginator, MatSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'pilt-calories-dashboard',
-  templateUrl: './calories-dashboard.component.html',
-  styleUrls: ['./calories-dashboard.component.scss']
+  selector: 'pilt-all-food',
+  templateUrl: './all-food.component.html',
+  styleUrls: ['./all-food.component.scss']
 })
-export class CaloriesDashboardComponent implements OnInit, OnDestroy {
+export class AllFoodComponent implements OnInit, OnDestroy {
   public allFood: FoodCard[];
   public searchText: string;
   public query: string;

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards';
 
 import { FoodComponent,
-  CaloriesDashboardComponent,
+  AllFoodComponent,
   FoodFormComponent,
   UserFoodTableComponent
 } from './';
@@ -12,7 +12,7 @@ import { FoodComponent,
 const routes: Routes = [
   { path: 'food', component: FoodComponent, canActivate: [AuthGuard], children: [
     {path: 'new-card', component: FoodFormComponent },
-    {path: 'food-search', component: CaloriesDashboardComponent },
+    {path: 'all-food', component: AllFoodComponent },
     {path: 'food-table', component: UserFoodTableComponent }
   ]}
 ];
