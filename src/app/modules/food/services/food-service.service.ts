@@ -1,6 +1,6 @@
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FoodCard } from 'src/app/core/interfaces/food-card';
 import { Injectable } from '@angular/core';
@@ -9,7 +9,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FoodService {
-  constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
+  public allFood: FoodCard[] = [];
+
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage) {}
+
+  public addFood(food: FoodCard) {
+    this.allFood.push(food);
+  }
+
+  public getMyFood(): Observable<FoodCard[]> {
+    this.allFood = this.allFood;
+    return of(this.allFood);
+  }
 
   public uploadFood(food: FoodCard): Promise<void> {
     let foodIs: Observable<boolean>;

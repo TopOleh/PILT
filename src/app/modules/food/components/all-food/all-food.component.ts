@@ -6,6 +6,7 @@ import { FoodService } from 'src/app/modules/food/services/food-service.service'
 // rxjs
 import { Subscription } from 'rxjs';
 import { MatTableDataSource, MatSort, MatPaginator, MatSnackBar } from '@angular/material';
+import { BreakpointsService } from 'src/app/core/services/breakpoints.service';
 
 @Component({
   selector: 'pilt-all-food',
@@ -27,7 +28,7 @@ export class AllFoodComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) pagination: MatPaginator;
 
-  constructor(public foodService: FoodService, private snackBar: MatSnackBar) { }
+  constructor(public foodService: FoodService, private snackBar: MatSnackBar, private breakpointsService: BreakpointsService) { }
 
   ngOnInit() {
     this.subscription = this.foodService.getAllDishes()
@@ -36,7 +37,7 @@ export class AllFoodComponent implements OnInit, OnDestroy {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.pagination;
 
-    this.mobile = window.innerWidth < 640 ? true : false;
+    this.mobile = this.breakpointsService.checkMobileView();
   }
 
   ngOnDestroy() {
@@ -44,9 +45,7 @@ export class AllFoodComponent implements OnInit, OnDestroy {
   }
 
   public addFood(food: FoodCard): void {
-    this.userFood = JSON.parse(localStorage.getItem('User food')) || [];
-    this.userFood.push(food);
-    localStorage.setItem('User food', JSON.stringify(this.userFood));
+    this.foodService.addFood(food);
     this.openSnackBar();
   }
 

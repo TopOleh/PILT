@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointsService } from 'src/app/core/services';
 
 @Component({
   selector: 'pilt-auth',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   public breakpoint: number;
-  constructor() { }
+  constructor(private breakpointsService: BreakpointsService) { }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 959) ? 1 : 2;
+    this.breakpoint = (this.breakpointsService.checkSmallTabletView()) ? 1 : 2;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 959) ? 1 : 2;
+    this.breakpoint = (this.breakpointsService.checkSmallTabletView()) ? 1 : 2;
   }
 }
