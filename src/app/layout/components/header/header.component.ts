@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/modules/auth/services';
 import { Component, OnInit, HostListener } from '@angular/core';
 
 interface MenuItem  {
@@ -25,9 +26,13 @@ export class HeaderComponent implements OnInit {
     ]}
   ];
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  public logout(): void {
+    this.auth.logout();
   }
 
 }

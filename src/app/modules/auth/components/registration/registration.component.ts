@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from 'src/app/core/interfaces/new-user';
+import { User } from 'src/app/core/interfaces/user';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../services';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pilt-registration',
@@ -12,6 +13,7 @@ import { AuthService } from '../../services';
 })
 export class RegistrationComponent implements OnInit {
   private minLengthPassword: number = 6;
+  private durationSnackBar: number = 3;
 
   public registerForm: FormGroup;
   public isSubmitted: boolean = false;
@@ -23,7 +25,8 @@ export class RegistrationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -31,8 +34,8 @@ export class RegistrationComponent implements OnInit {
       // age: ['', Validators.required],
       // name: ['', Validators.required],
       // gender: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(this.minLengthPassword)]]
+      email: ['dgtop@email.com', [Validators.required, Validators.email]],
+      password: ['123456', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
 
     // get return url from the route parameters or default '/'
@@ -50,17 +53,30 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.authService.getUser(user)
-    .subscribe(
-      users => {
-        if (users) {
-          console.error('User already exist');
-        } else {
-          this.authService.register(user);
-          this.router.navigate([this.returnUrl]);
-        }
-      },
-      err => console.error('Register error :', err)
+    this.authService.getUser(user).then(
+      res =>  {
+        this.router.navigateByUrl(this.returnUrl);
+      }
+    )
+    .catch(error => {
+      this.snackBar.open(error.message, 'Х' , {
+        duration: this.durationSnackBar * 1000
+      });
+    })
+    .finally(() => {
+      this.registerForm.reset();
+    }
     );
+    // .subscribe(
+    //   users => {
+    //     if (users) {
+    //       console.error('User already exist');
+    //     } else {
+    //       this.authService.register(user);
+    //       this.router.navigate([this.returnUrl]);
+    //     }
+    //   },
+    //   err => console.error('Register error :', err)
+    // );
   }
 }

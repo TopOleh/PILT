@@ -50,17 +50,17 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.getUser(user)
-    .subscribe(
-      users => {
-        if (users) {
-          this.router.navigate([this.returnUrl]);
-        } else {
-          console.error('Wrong email or password');
-        }
-      },
+    // .subscribe(
+    //   users => {
+    //     if (users) {
+    //       this.router.navigate([this.returnUrl]);
+    //     } else {
+    //       console.error('Wrong email or password');
+    //     }
+    //   },
 
-      err => console.error('Login error :', err)
-    );
+    //   err => console.error('Login error :', err)
+    // );
   }
 
 }
