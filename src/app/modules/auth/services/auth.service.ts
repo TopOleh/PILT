@@ -1,7 +1,7 @@
 import { User } from 'src/app/core/interfaces/user';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -21,6 +21,7 @@ export class AuthService {
     this.currentUser = this._currentUserSubject.asObservable();
   }
 
+  public loggedIn$ = new Subject();
   public get currentUserValue(): User {
     return this._currentUserSubject.value;
   }
@@ -31,6 +32,12 @@ export class AuthService {
       .set(user)
       .then(_ => console.log('Added user :', user))
       .catch(err => console.log('Registration error :', err));
+  }
+
+  public checkUserStatus(): void {
+    this.auth.auth.onAuthStateChanged(user => {
+      this.loggedIn$.next(user);
+    });
   }
 
   public signInUser(user: User): Promise<any> {
@@ -66,10 +73,6 @@ export class AuthService {
 
   public signOutUser() {
     this.auth.auth.signOut()
-      .then ( () => {
-        console.log('User logged out');
-      }
-      );
     // localStorage.removeItem('currentUser');
     // this._currentUserSubject.next(null);
   }
