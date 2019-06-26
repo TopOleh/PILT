@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NewUser } from 'src/app/core/interfaces/new-user';
+import { User } from 'src/app/core/interfaces/new-user';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../services';
@@ -28,9 +28,9 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      age: ['', Validators.required],
-      name: ['', Validators.required],
-      gender: ['', Validators.required],
+      // age: ['', Validators.required],
+      // name: ['', Validators.required],
+      // gender: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
@@ -43,7 +43,7 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  public submitRegistration(user: NewUser): void {
+  public submitRegistration(user: User): void {
     this.isSubmitted = true;
 
     if (this.registerForm.invalid) {
