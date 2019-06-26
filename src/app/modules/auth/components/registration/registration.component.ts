@@ -53,8 +53,8 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.authService.getUser(user).then(
-      res =>  {
+    this.authService.signUpUser(user).then(
+      () =>  {
         this.router.navigateByUrl(this.returnUrl);
       }
     )

@@ -33,7 +33,11 @@ export class AuthService {
       .catch(err => console.log('Registration error :', err));
   }
 
-  public getUser(user: User): Promise<any> {
+  public signInUser(user: User): Promise<any> {
+    return this.auth.auth.signInWithEmailAndPassword(user.email, user.password);
+  }
+
+  public signUpUser(user: User): Promise<any> {
     return this.auth.auth.createUserWithEmailAndPassword(user.email, user.password);
     // return;
     // return this.db.collection<User>('users', ref => ref.where('email', '==', user.email))
@@ -60,7 +64,7 @@ export class AuthService {
     // );
   }
 
-  public logout() {
+  public signOutUser() {
     this.auth.auth.signOut()
       .then ( () => {
         console.log('User logged out');

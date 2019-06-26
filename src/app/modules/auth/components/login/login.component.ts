@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { AuthService } from 'src/app/modules/auth/services';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -11,6 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private minPasswordLength: number = 6;
+  private durationSnackBar: number = 3;
+
   public submitted: boolean = false;
   public loginForm: FormGroup;
   public hide: boolean = true;
@@ -20,7 +23,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
     ) {
       // redirect to home if already logged in
       if (this.authService.currentUserValue) {
@@ -30,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['dgtop@email', [Validators.email, Validators.required]],
+      email: ['dgtop@email.com', [Validators.email, Validators.required]],
       password: ['123456', [Validators.required, Validators.minLength(this.minPasswordLength)]]
     });
 
@@ -42,14 +46,28 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  public submitLogin(user: User): void {
+  public signIn(user: User): void {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.authService.getUser(user)
+    this.authService.signInUser(user).then(
+      res =>  {
+        console.log(res.user);
+        // this.router.navigateByUrl(this.returnUrl);
+      }
+    )
+    .catch(error => {
+      this.snackBar.open(error.message, 'Х' , {
+        duration: this.durationSnackBar * 1000
+      });
+    })
+    .finally(() => {
+      this.loginForm.reset();
+    }
+    );
     // .subscribe(
     //   users => {
     //     if (users) {
