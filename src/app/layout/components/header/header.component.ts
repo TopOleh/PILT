@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.checkUserStatus();
   }
 
   public signOut(): void {

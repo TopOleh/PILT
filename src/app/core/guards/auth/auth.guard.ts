@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/services';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, OnDestroy {
+  private userLoggedIn: boolean;
+  private subscribtion: Subscription;
 
   constructor(
-    private authService: AuthService,
+    private auth: AuthService,
     private router: Router
   ) {}
 
@@ -17,9 +19,12 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const currentUser = this.authService.currentUserValue;
 
-    if (currentUser) {
+    this.subscribtion = this.auth.loggedIn$.subscribe(user => {
+      this.userLoggedIn = !!user;
+    });
+
+    if (this.userLoggedIn) {
       // authorised so return true
       return true;
     }
@@ -27,5 +32,9 @@ export class AuthGuard implements CanActivate {
     // not logged in so redirect to login page with the return url
     this.router.navigate(['auth/login'], { queryParams: { returnUrl: state.url }});
     return false;
+  }
+
+  ngOnDestroy() {
+    this.subscribtion.unsubscribe();
   }
 }

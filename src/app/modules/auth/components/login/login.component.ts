@@ -25,12 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
-    ) {
-      // redirect to home if already logged in
-      if (this.authService.currentUserValue) {
-        this.router.navigate(['/food']);
-      }
-    }
+    ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -53,32 +48,16 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService.signInUser(user).then(
-      res =>  {
-        console.log(res.user);
-        // this.router.navigateByUrl(this.returnUrl);
-      }
-    )
-    .catch(error => {
-      this.snackBar.open(error.message, 'Х' , {
-        duration: this.durationSnackBar * 1000
+    this.authService.signInUser(user)
+      .then( res => this.router.navigateByUrl(this.returnUrl))
+      .catch(error => {
+        this.snackBar.open(error.message, 'Х' , {
+          duration: this.durationSnackBar * 1000
+        });
+      })
+      .finally(() => {
+        this.loginForm.reset();
       });
-    })
-    .finally(() => {
-      this.loginForm.reset();
-    }
-    );
-    // .subscribe(
-    //   users => {
-    //     if (users) {
-    //       this.router.navigate([this.returnUrl]);
-    //     } else {
-    //       console.error('Wrong email or password');
-    //     }
-    //   },
-
-    //   err => console.error('Login error :', err)
-    // );
   }
 
 }

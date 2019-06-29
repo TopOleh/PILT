@@ -29,20 +29,20 @@ export class FoodFormComponent implements OnInit {
     return this.foodForm.controls;
   }
 
-  public uploadFood(food: FoodCard) {
-    this.isSubmitted = true;
+  // public uploadFood(food: FoodCard) {
+  //   this.isSubmitted = true;
 
-    if (this.foodForm.invalid) {
-      return false;
-    }
+  //   if (this.foodForm.invalid) {
+  //     return false;
+  //   }
 
-    food.image = this.image;
-    console.log(food);
-    this.foodService.uploadFood(food);
-  }
+  //   food.image = this.image;
+  //   console.log(food);
+  //   this.foodService.uploadFood(food);
+  // }
 
-  public chooseImage($event) {
-    this.foodService.uploadImage($event.target.files[0])
-    .then(res => this.image = res);
-  }
+  // public chooseImage($event) {
+  //   this.foodService.uploadImage($event.target.files[0])
+  //   .then(res => this.image = res);
+  // }
 }

@@ -31,9 +31,6 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      // age: ['', Validators.required],
-      // name: ['', Validators.required],
-      // gender: ['', Validators.required],
       email: ['dgtop@email.com', [Validators.required, Validators.email]],
       password: ['123456', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
@@ -65,18 +62,6 @@ export class RegistrationComponent implements OnInit {
     })
     .finally(() => {
       this.registerForm.reset();
-    }
-    );
-    // .subscribe(
-    //   users => {
-    //     if (users) {
-    //       console.error('User already exist');
-    //     } else {
-    //       this.authService.register(user);
-    //       this.router.navigate([this.returnUrl]);
-    //     }
-    //   },
-    //   err => console.error('Register error :', err)
-    // );
+    });
   }
 }

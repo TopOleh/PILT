@@ -71,16 +71,16 @@ export class FoodService {
     return +(food.calories / food.calPerGram).toFixed(2);
   }
 
-  async uploadImage(image) {
-    let task: AngularFireUploadTask;
-    // The storage path
-    const path = `Food/Images/${image.name}`;
-    // Reference to storage bucket
-    const ref = this.storage.ref(path);
-    // The main task
-    task = this.storage.upload(path, image);
+  // async uploadImage(image) {
+  //   let task: AngularFireUploadTask;
+  //   // The storage path
+  //   const path = `Food/Images/${image.name}`;
+  //   // Reference to storage bucket
+  //   const ref = this.storage.ref(path);
+  //   // The main task
+  //   task = this.storage.upload(path, image);
 
-    await task;
-    return ref.getDownloadURL().toPromise();
-  }
+  //   await task;
+  //   return ref.getDownloadURL().toPromise();
+  // }
 }
