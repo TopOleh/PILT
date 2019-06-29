@@ -22,34 +22,6 @@ export class FoodService {
     return of(this.allFood);
   }
 
-  public uploadFood(food: FoodCard): Promise<void> {
-    let foodIs: Observable<boolean>;
-    foodIs = this.getFood(food)
-    .pipe(
-      map(res => !!res)
-      );
-    if (!foodIs) {
-      console.error('Food already exist');
-      return;
-    }
-
-    return this.db.collection<FoodCard>('food')
-      .doc(food.title)
-      .set(food)
-      .then( _ => console.log('Added food', food))
-      .catch( err => console.log('Error while adding', err));
-  }
-
-  public getFood(food: FoodCard): Observable<FoodCard> {
-    return this.db.collection<FoodCard>('food', ref => ref.where('title', '==', food.title))
-      .valueChanges()
-      .pipe(
-        map((_food: FoodCard[]) => {
-          return _food.shift();
-        })
-      );
-  }
-
   public getAllDishes(): Observable<FoodCard[]> {
     return this.db.collection<FoodCard>('food')
     .valueChanges()

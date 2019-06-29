@@ -2,7 +2,7 @@
     <form
       class="pilt-food-form__wrapper"
       [formGroup]="foodForm"
-      (ngSubmit)="uploadFood(foodForm.value)"
+      (ngSubmit)="0"
       autocomplete="off">
     <mat-form-field>
       <input matInput formControlName="title" placeholder="Назва страви" type="text" value="Морква">
@@ -14,7 +14,7 @@
       <mat-error *ngIf="!!fc.description.invalid && !!fc.description.errors.required">Опис обов'язкова!</mat-error>
     </mat-form-field>
 
-    <input formControlName="image" (change)='chooseImage($event)' placeholder="Картинка" type="file">
+    <input formControlName="image" (change)='0' placeholder="Картинка" type="file">
     <img src="{{image}}">
     <mat-form-field>
       <input matInput formControlName="grams" placeholder="Грам" type="number" value="100">
