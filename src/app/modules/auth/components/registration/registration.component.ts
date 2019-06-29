@@ -31,8 +31,8 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['dgtop@email.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required, Validators.minLength(this.minLengthPassword)]]
+      email: ['Your email', [Validators.required, Validators.email]],
+      password: ['password', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
 
     // get return url from the route parameters or default '/'
