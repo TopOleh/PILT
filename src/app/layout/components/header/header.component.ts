@@ -1,6 +1,7 @@
 import { AuthService } from 'src/app/modules/auth/services';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { tap } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 interface MenuItem  {
   path: string;
@@ -29,7 +30,10 @@ export class HeaderComponent implements OnInit {
     ]}
   ];
 
-  constructor(public auth: AuthService) { }
+  constructor(
+    public auth: AuthService,
+    public fireAuth: AngularFireAuth
+    ) { }
 
   ngOnInit() {
   }

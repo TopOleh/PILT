@@ -1,40 +1,44 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { AuthService } from 'src/app/modules/auth/services';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, OnDestroy {
-  private userLoggedIn: boolean;
-  private subscribtion: Subscription;
+export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(
-    private auth: AuthService,
+    private fireAuth: AngularFireAuth,
     private router: Router
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-
-    this.subscribtion = this.auth.loggedIn$.subscribe(user => {
-      this.userLoggedIn = !!user;
-    });
-
-    if (this.userLoggedIn) {
-      // authorised so return true
-      return true;
-    }
-
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['auth/login'], { queryParams: { returnUrl: state.url }});
-    return false;
+  ): Observable<boolean> {
+    return this.checkLogIn(state);
   }
 
-  ngOnDestroy() {
-    this.subscribtion.unsubscribe();
+  canActivateChild(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
+    return this.checkLogIn(state);
+  }
+
+  private checkLogIn(state: RouterStateSnapshot): Observable<boolean> {
+    return this.fireAuth.user
+    .pipe(
+      map(data => {
+        if (!data) {
+          this.router.navigate(['auth/login'], { queryParams: { returnUrl: state.url }});
+          return false;
+        }
+
+        return true;
+        })
+      );
   }
 }

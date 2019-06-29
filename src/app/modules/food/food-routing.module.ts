@@ -10,7 +10,11 @@ import { FoodComponent,
 } from './';
 
 const routes: Routes = [
-  { path: 'food', component: FoodComponent, canActivate: [AuthGuard], children: [
+  { path: 'food',
+  component: FoodComponent,
+  canActivate: [AuthGuard],
+  canActivateChild: [AuthGuard],
+  children: [
     {path: 'new-card', component: FoodFormComponent },
     {path: 'all-food', component: AllFoodComponent },
     {path: 'food-table', component: UserFoodTableComponent }

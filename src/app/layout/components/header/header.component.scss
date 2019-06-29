@@ -1,4 +1,6 @@
-.pilt-auth__link {
+@import 'src/assets/styles/variables';
+
+.pilt-auth__item {
   margin: 20px;
   padding: 10px;
   position: absolute;
@@ -6,6 +8,13 @@
   right: 0;
   z-index: 1;
 }
+
+.pilt-auth__logout {
+  border: none;
+  background: $main-bg-color;
+  color: $main-pink-color;
+}
+
 .pilt-navigation {
   padding: 30px;
 
@@ -16,6 +25,11 @@
 
   & &__item {
     padding-right: 15px;
+  }
+
+  & &__link {
+    display: flex;
+    align-items: center;
   }
 
   & &__dropdown {

@@ -10,7 +10,7 @@ $text-register-title-color: #937d9e;
   position: absolute;
   width: 100%;
 
-  @media (min-width: $screen-mb) {
+  @media (min-width: $screen-sm) {
     height: 100%;
   }
 }

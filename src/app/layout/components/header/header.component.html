@@ -1,32 +1,35 @@
 <nav class="pilt-navigation">
   <ul class="pilt-navigation__menu">
     <li *ngFor="let route of menuList" class="pilt-navigation__item" piltShowRoutes>
-      <a routerLink="{{route.path}}" >
+      <a routerLink="{{route.path}}">
           <mat-icon>{{route.icon}}</mat-icon>
           {{route.title}}
       </a>
       <ul class="pilt-navigation__dropdown">
         <ng-container *ngFor="let childRoute of route.childLinks">
           <li class="pilt-navigation-dropdown__item"
-          *ngIf="childRoute.signedIn === !!(auth.loggedIn$ | async) || childRoute.signedIn === undefined">
+          *ngIf="childRoute.signedIn === !!(fireAuth.user | async) || childRoute.signedIn === undefined">
             <a routerLink="{{childRoute.path}}" class="pilt-navigation-dropdown__link">
                   {{childRoute.title}}
             </a>
           </li>
         </ng-container>
-
       </ul>
     </li>
-    <li>
-      <button mat-raised-button (click)="signOut()" color="primary">
-        LogOut
-      </button>
-    </li>
-    <li>
-      <a class="pilt-auth__link" routerLink="auth">
-        <mat-icon>person</mat-icon>
-        LogIn
-      </a>
+
+    <li class="pilt-auth__item">
+      <ng-container *ngIf="!!(fireAuth.user | async) else logInButton">
+          <button class="pilt-auth__logout pilt-navigation__link" (click)="signOut()">
+            <mat-icon>person</mat-icon>
+            <span>LogOut</span>
+          </button>
+      </ng-container>
+      <ng-template #logInButton>
+          <a routerLink="auth" class="pilt-navigation__link">
+            <mat-icon>person</mat-icon>
+            <span>LogIn</span>
+          </a>
+      </ng-template>
     </li>
   </ul>
 </nav >

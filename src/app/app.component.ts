@@ -1,18 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from './modules/auth';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'pilt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-
-  constructor(private auth: AuthService) {}
-
-  ngOnInit() {
-    this.auth.checkUserStatus();
-  }
+export class AppComponent {
 
   public onActivate($event): void {
     console.log('Activated component :', $event);
