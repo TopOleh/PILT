@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['Your email', [Validators.email, Validators.required]],
-      password: ['password', [Validators.required, Validators.minLength(this.minPasswordLength)]]
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(this.minPasswordLength)]]
     });
 
     // get return url from the route parameters or default '/'
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         });
       })
       .finally(() => {
-        this.loginForm.reset();
+        this.fc.password.setValue('');
       });
   }
 

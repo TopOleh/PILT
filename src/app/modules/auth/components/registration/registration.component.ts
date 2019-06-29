@@ -31,8 +31,8 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['Your email', [Validators.required, Validators.email]],
-      password: ['password', [Validators.required, Validators.minLength(this.minLengthPassword)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(this.minLengthPassword)]]
     });
 
     // get return url from the route parameters or default '/'
@@ -61,7 +61,7 @@ export class RegistrationComponent implements OnInit {
       });
     })
     .finally(() => {
-      this.registerForm.reset();
+      this.fc.password.setValue('');
     });
   }
 }
