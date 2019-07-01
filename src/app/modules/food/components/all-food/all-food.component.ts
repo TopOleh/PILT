@@ -21,7 +21,6 @@ export class AllFoodComponent implements OnInit, OnDestroy {
   public displayedColumns: string[] = ['title', 'description', 'grams', 'calories', 'add'];
   public mobile: boolean = false;
 
-  private userFood: FoodCard[];
   private subscription: Subscription;
   private durationSnackBar: number = 2;
 

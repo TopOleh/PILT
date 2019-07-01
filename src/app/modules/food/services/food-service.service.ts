@@ -11,7 +11,16 @@ import { Injectable } from '@angular/core';
 export class FoodService {
   public allFood: FoodCard[] = [];
 
-  constructor(private db: AngularFirestore, private storage: AngularFireStorage) {}
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage) {
+  }
+
+  onPushMockData(data: FoodCard[]) {
+
+    for (const item of data) {
+      this.db.collection('all-food').add(item);
+    }
+
+  }
 
   public addFood(food: FoodCard) {
     this.allFood.push(food);

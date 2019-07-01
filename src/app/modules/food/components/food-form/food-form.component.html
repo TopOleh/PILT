@@ -2,29 +2,10 @@
     <form
       class="pilt-food-form__wrapper"
       [formGroup]="foodForm"
-      (ngSubmit)="0"
+      (ngSubmit)="onPushMockData()"
       autocomplete="off">
-    <mat-form-field>
-      <input matInput formControlName="title" placeholder="Назва страви" type="text" value="Морква">
-      <mat-error *ngIf="!!fc.title.invalid && !!fc.title.errors.required">Назва обов'язкова!</mat-error>
-    </mat-form-field>
 
-    <mat-form-field>
-      <input matInput formControlName="description" placeholder="Опис страви" type="text" value="Овоч">
-      <mat-error *ngIf="!!fc.description.invalid && !!fc.description.errors.required">Опис обов'язкова!</mat-error>
-    </mat-form-field>
-
-    <input formControlName="image" (change)='0' placeholder="Картинка" type="file">
-    <img src="{{image}}">
-    <mat-form-field>
-      <input matInput formControlName="grams" placeholder="Грам" type="number" value="100">
-      <mat-error *ngIf="!!fc.grams.invalid && !!fc.grams.errors.required">Грами обов'язкові!</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput formControlName="calories" placeholder="Калорії" type="number" value="12">
-      <mat-error *ngIf="!!fc.calories.invalid && !!fc.calories.errors.required">Калорійність обов'язкова!</mat-error>
-    </mat-form-field>
+    <input type="file" formControlName="food" (change)='uploadFile($event)'>
 
     <button mat-raised-button color="primary">Завантажити страву</button>
   </form>
