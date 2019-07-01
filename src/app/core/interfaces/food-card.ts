@@ -7,5 +7,5 @@ export interface FoodCard {
   grams: number;
   protein: number;
   name: string;
-  type: number;
+  type: string;
 }

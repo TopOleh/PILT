@@ -14,10 +14,10 @@ export class FoodService {
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) {
   }
 
-  onPushMockData(data: FoodCard[]) {
+  onPushMockData(foodList: FoodCard[]) {
 
-    for (const item of data) {
-      this.db.collection('all-food').add(item);
+    for (const food of foodList) {
+      this.db.collection('all-food').doc(food.name).set(food);
     }
 
   }
@@ -32,7 +32,7 @@ export class FoodService {
   }
 
   public getAllDishes(): Observable<FoodCard[]> {
-    return this.db.collection<FoodCard>('food')
+    return this.db.collection<FoodCard>('all-food')
     .valueChanges()
     .pipe(
       map(
