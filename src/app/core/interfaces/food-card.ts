@@ -1,8 +1,11 @@
 export interface FoodCard {
+  id: number;
   calories: number;
-  description: string;
-  calPerGram?: number;
+  calPerGram: number;
+  carbs: number;
+  fat: number;
   grams: number;
-  image?: string;
-  title: string;
+  protein: number;
+  name: string;
+  type: number;
 }
