@@ -18,11 +18,12 @@ export class AllFoodComponent implements OnInit, OnDestroy {
   public searchText: string;
   public query: string;
   public dataSource = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'name', 'type', 'protein', 'carbs', 'fat', 'calories', 'grams', 'add'];
-  public mobile: boolean = false;
+  public displayedColumns: string[];
+  public mobile: boolean;
 
   private subscription: Subscription;
   private durationSnackBar: number = 2;
+  private type: string[];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) pagination: MatPaginator;
@@ -30,7 +31,7 @@ export class AllFoodComponent implements OnInit, OnDestroy {
   constructor(public foodService: FoodService, private snackBar: MatSnackBar, private breakpointsService: BreakpointsService) { }
 
   ngOnInit() {
-    const sortStartState: Sort = {active: 'id', direction: 'asc'};
+    const sortStartState: Sort = {active: 'name', direction: 'asc'};
 
     this.subscription = this.foodService.getAllDishes()
     .subscribe(foodAmount => this.dataSource.data = foodAmount);
@@ -43,6 +44,10 @@ export class AllFoodComponent implements OnInit, OnDestroy {
     this.sort.disableClear = true;
 
     this.mobile = this.breakpointsService.checkMobileView();
+
+    this.type = this.mobile ? [] : ['type'];
+
+    this.displayedColumns  = ['name', ...this.type, 'protein', 'carbs', 'fat', 'calories', 'grams', 'add']
   }
 
   ngOnDestroy() {

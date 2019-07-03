@@ -46,8 +46,13 @@ export class FoodFormComponent implements OnInit {
           food.carbs = +(food.carbs.split(',').join('.'));
           food.fat = +(food.fat.split(',').join('.'));
           food.protein = +(food.protein.split(',').join('.'));
+          food.perGram = {
+            cal: food.calories / 100,
+            carbs: food.carbs / 100,
+            protein: food.protein / 100,
+            fat: food.fat / 100,
+          };
           food.grams = 100;
-          food.calPerGram = +(food.calories / 100).toFixed(2);
         });
         console.log('foodList', foodList);
         self.allFood = foodList;

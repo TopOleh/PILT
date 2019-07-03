@@ -33,23 +33,15 @@ export class FoodService {
 
   public getAllDishes(): Observable<FoodCard[]> {
     return this.db.collection<FoodCard>('all-food')
-    .valueChanges()
-    .pipe(
-      map(
-        (foodAmount: FoodCard[]) => foodAmount
-          .map((food: FoodCard) => {
-            food.calPerGram = food.calories / 100;
-            return food;
-          }))
-    );
+    .valueChanges();
   }
 
-  public calcCalories(food: FoodCard): number {
-    return +(food.grams * food.calPerGram).toFixed(2);
-  }
-
-  public calcGrams(food: FoodCard): number {
-    return +(food.calories / food.calPerGram).toFixed(2);
+  public recalculateFood(food: FoodCard): FoodCard {
+    food.calories = Math.floor(food.perGram.cal * food.grams * 100) / 100 ;
+    food.carbs = Math.floor(food.perGram.carbs * food.grams * 100) / 100 ;
+    food.fat = Math.floor(food.perGram.fat * food.grams * 100) / 100 ;
+    food.protein = Math.floor(food.perGram.protein * food.grams * 100) / 100 ;
+    return food;
   }
 
   // async uploadImage(image) {

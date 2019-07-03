@@ -17,10 +17,11 @@
   }
 
   & &__input {
+    border: none;
     width: 40px;
   }
 
-  & &-food__name {
+  & &-first__column {
     padding-left: 10px;
   }
 }

@@ -44,7 +44,7 @@ $text-register-title-color: #937d9e;
 }
 
 .pilt-auth-image__description {
-  @include text-big-description;
+  @include big-paragraph;
   color: $text-description-color;
 }
 .pilt-right-side__wrapper {

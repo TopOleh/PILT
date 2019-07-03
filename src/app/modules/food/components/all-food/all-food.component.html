@@ -6,16 +6,10 @@
   <div class="pilt-dashboard-wrapper">
     <table mat-table [dataSource]="dataSource" matSort class="pilt-dashboard-wrapper__table">
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>N</th>
-        <td mat-cell *matCellDef="let food">{{food.id}}</td>
-      </ng-container>
-
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="pilt-dashboard-food__name">Назва</th>
-        <td mat-cell *matCellDef="let food" class="pilt-dashboard-food__name">{{food.name}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="pilt-dashboard-first__column">Назва</th>
+        <td mat-cell *matCellDef="let food" class="pilt-dashboard-first__column">{{food.name}}</td>
       </ng-container>
 
       <!-- Type Column -->
@@ -24,50 +18,91 @@
         <td mat-cell *matCellDef="let food">{{food.type}}</td>
       </ng-container>
 
-      <!-- Protein Column -->
+      <!-- Calories Column -->
+      <ng-container matColumnDef="calories">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <span *ngIf="mobile; else caloriesMobile">
+              Ккал
+            </span>
+            <ng-template #caloriesMobile>
+              Калорійність
+            </ng-template>
+          </th>
+          <td mat-cell *matCellDef="let food">
+            <input type="number"
+              class="pilt-dashboard__input"
+              [(ngModel)]="food.calories"
+              min="0"
+              readonly>
+          </td>
+        </ng-container>
+
+        <!-- Protein Column -->
       <ng-container matColumnDef="protein">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Білки</th>
-        <td mat-cell *matCellDef="let food">{{food.protein}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span *ngIf="mobile; else carbsMobile">
+              Б
+          </span>
+          <ng-template #carbsMobile>
+            Білки
+          </ng-template>
+        </th>
+        <td mat-cell *matCellDef="let food">
+          <input type="number"
+            class="pilt-dashboard__input"
+            [(ngModel)]="food.protein"
+            min="0"
+            readonly>
+        </td>
       </ng-container>
 
       <!-- Fat Column -->
       <ng-container matColumnDef="fat">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Жири</th>
-        <td mat-cell *matCellDef="let food">{{food.fat}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span *ngIf="mobile; else carbsMobile">
+            Ж
+          </span>
+          <ng-template #carbsMobile>
+            Жири
+          </ng-template>
+        </th>
+        <td mat-cell *matCellDef="let food">
+          <input type="number"
+            class="pilt-dashboard__input"
+            [(ngModel)]="food.fat"
+            min="0"
+            readonly>
+        </td>
       </ng-container>
 
       <!-- Carbs Column -->
       <ng-container matColumnDef="carbs">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Вуглеводи</th>
-        <td mat-cell *matCellDef="let food">{{food.carbs}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span *ngIf="mobile; else carbsMobile">
+            В
+          </span>
+          <ng-template #carbsMobile>
+            Вуглеводи
+          </ng-template>
+        </th>
+        <td mat-cell *matCellDef="let food">
+          <input type="number"
+            class="pilt-dashboard__input"
+            [(ngModel)]="food.carbs"
+            min="0"
+            readonly>
+        </td>
       </ng-container>
 
       <!-- Grams Column -->
       <ng-container matColumnDef="grams">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Грами</th>
         <td mat-cell *matCellDef="let food">
-          <mat-form-field class="pilt-dashboard__input">
-            <input type="number" matInput [(ngModel)]="food.grams"
-              (input)="food.calories = foodService.calcCalories(food)" min="0" />
-          </mat-form-field>
-        </td>
-      </ng-container>
-
-      <!-- Calories Column -->
-      <ng-container matColumnDef="calories">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <span *ngIf="mobile; else caloriesMobile">
-            Ккал
-          </span>
-          <ng-template #caloriesMobile>
-            Калорійність
-          </ng-template>
-        </th>
-        <td mat-cell *matCellDef="let food">
-          <mat-form-field class="pilt-dashboard__input">
-            <input type="number" matInput [(ngModel)]="food.calories" (input)="food.grams = foodService.calcGrams(food)"
-              min="0">
-          </mat-form-field>
+          <input type="number"
+            class="pilt-dashboard__input"
+            [(ngModel)]="food.grams"
+            (input)="foodService.recalculateFood(food)"
+            min="0">
         </td>
       </ng-container>
 
