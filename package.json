@@ -37,7 +37,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-angular": "^15.0.4",
     "@angular/flex-layout": "^7.0.0-beta.24",
     "@angular/language-service": "~7.2.0",
     "@types/crypto-js": "^3.1.43",
